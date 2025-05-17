@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@vela-ui/react": "workspace:*",
-    "@vela-ui/theme-tw3": "workspace:*",
+    "@vela-ui/theme-tw3": "^1.0.1",
     "react": "^19.1.0",
     "react-aria-components": "^1.8.0",
     "react-dom": "^19.1.0"
