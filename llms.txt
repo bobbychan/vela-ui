@@ -2146,6 +2146,7 @@ import {
   DrawerContent,
   DrawerHeader,
   DrawerTitle,
+  DrawerBody,
   DrawerTrigger,
 } from "@vela-ui/react"
 
@@ -2158,9 +2159,7 @@ export function Basic() {
           <DrawerHeader>
             <DrawerTitle>Drawer Title</DrawerTitle>
           </DrawerHeader>
-          <div className="p-6">
-            <p>This is the drawer content.</p>
-          </div>
+          <DrawerBody>This is the drawer content.</DrawerBody>
         </DrawerContent>
       </Drawer>
     </DrawerTrigger>
@@ -2178,6 +2177,7 @@ import {
   Drawer,
   DrawerContent,
   DrawerHeader,
+  DrawerBody,
   DrawerTitle,
   DrawerTrigger,
 } from "@vela-ui/react"
@@ -2192,7 +2192,7 @@ export function Placements() {
             <DrawerHeader>
               <DrawerTitle>Top Drawer</DrawerTitle>
             </DrawerHeader>
-            <div className="p-6">Content slides in from the top.</div>
+            <DrawerBody>Content slides in from the top.</DrawerBody>
           </DrawerContent>
         </Drawer>
       </DrawerTrigger>
@@ -2204,7 +2204,7 @@ export function Placements() {
             <DrawerHeader>
               <DrawerTitle>Left Drawer</DrawerTitle>
             </DrawerHeader>
-            <div className="p-6">Content slides in from the left.</div>
+            <DrawerBody>Content slides in from the left.</DrawerBody>
           </DrawerContent>
         </Drawer>
       </DrawerTrigger>
