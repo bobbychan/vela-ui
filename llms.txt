@@ -1,0 +1,3267 @@
+# Vela UI
+
+Vela UI is a modern React component library built on top of React Aria Components, designed to provide accessible, customizable, and high-quality UI components for React applications. It leverages Tailwind CSS for styling and tailwind-variants for component variant management.
+
+## Why React Aria?
+
+React Aria is style-free out of the box, allowing you to build custom designs to fit your application or design system using any styling and animation solution. Each component is broken down into individual parts with built-in states, render props, and slots that make styling a breeze.
+
+## Why Tailwind CSS?
+
+All components are built with Tailwind CSS v4, which provides a robust set of utility classes for styling. This allows you to quickly and easily customize the appearance of your components without having to write custom CSS.
+
+- [Vela UI](https://github.com/vela-ui/vela-ui)
+- [React Aria Components](https://react-spectrum.adobe.com/react-aria/components.html)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [tailwind-variants](https://www.tailwind-variants.org/docs/getting-started)
+
+## Installation
+
+Add dependencies to your project manually.
+
+### Add Tailwind CSS
+
+Components are styled using Tailwind CSS. You need to install Tailwind CSS in your project.
+
+[Follow the Tailwind CSS installation instructions to get started.](https://tailwindcss.com/docs/installation)
+
+### Add dependencies
+
+```sh
+npm install tw-animate-css @vela-ui/react
+```
+
+## Theme Configuration
+
+Add the following to your styles/globals.css file
+
+```css
+@import "tailwindcss";
+@import "tw-animate-css";
+@custom-variant dark (&:is(.dark *));
+@source "../node_modules/@vela-ui/react";
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --chart-1: oklch(0.488 0.243 264.376);
+  --chart-2: oklch(0.696 0.17 162.48);
+  --chart-3: oklch(0.769 0.188 70.08);
+  --chart-4: oklch(0.627 0.265 303.9);
+  --chart-5: oklch(0.645 0.246 16.439);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(0.269 0 0);
+  --sidebar-ring: oklch(0.439 0 0);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+```
+
+## Styling
+
+React Aria Components do not include any styles by default, allowing you to build custom designs to fit your application or design system using any styling solution.
+
+[Styling docs](https://react-spectrum.adobe.com/react-aria/styling.html)
+
+# Components
+
+---
+
+# Alert
+
+An alert displays a message that draws the user's attention without interrupting their current activity.
+
+## Props
+
+**Alert Props**
+
+- Extends: `React.ComponentProps<"div">`
+- Description: The main container for the alert component.
+
+**AlertContent Props**
+
+- Extends: `React.ComponentProps<"div">`
+- Description: Container for alert content including title and description.
+
+**AlertTitle Props**
+
+- Extends: `React.ComponentProps<"div">`
+- Description: The title of the alert message.
+
+**AlertDescription Props**
+
+- Extends: `React.ComponentProps<"div">`
+- Description: The description text of the alert message.
+
+## Example
+
+Here's a basic example of how to use the Alert component:
+
+```tsx
+import { Alert, AlertTitle } from "@vela-ui/react"
+import { CircleCheckIcon } from "lucide-react"
+
+export function Basic() {
+  return (
+    <Alert>
+      <CircleCheckIcon />
+      <AlertTitle>Success! Your changes have been saved</AlertTitle>
+    </Alert>
+  )
+}
+```
+
+### With Description
+
+An Alert can include both a title and description:
+
+```tsx
+import { Alert, AlertContent, AlertDescription, AlertTitle } from "@vela-ui/react"
+import { CircleAlertIcon } from "lucide-react"
+
+export function WithDescription() {
+  return (
+    <Alert>
+      <CircleAlertIcon />
+      <AlertContent>
+        <AlertTitle>Browser Update available</AlertTitle>
+        <AlertDescription>For the best experience, please update your browser.</AlertDescription>
+      </AlertContent>
+    </Alert>
+  )
+}
+```
+
+### With Action Button
+
+An Alert can include action buttons:
+
+```tsx
+import { Alert, AlertContent, AlertDescription, AlertTitle, Button } from "@vela-ui/react"
+import { CircleCheckIcon } from "lucide-react"
+
+export function WithButton() {
+  return (
+    <Alert>
+      <CircleCheckIcon />
+      <AlertContent>
+        <AlertTitle>New message!</AlertTitle>
+        <AlertDescription>You have 1 unread message</AlertDescription>
+      </AlertContent>
+      <Button className="self-center" size="sm">
+        See
+      </Button>
+    </Alert>
+  )
+}
+```
+
+### Custom Styles
+
+You can customize the appearance of an Alert using custom CSS classes:
+
+```tsx
+import { Alert, AlertContent, AlertDescription, AlertTitle } from "@vela-ui/react"
+import { CircleCheckIcon } from "lucide-react"
+
+export function CustomStyles() {
+  return (
+    <Alert className="border-amber-900 bg-amber-50 text-amber-900 dark:border-amber-950 dark:bg-amber-950 dark:text-amber-100">
+      <CircleCheckIcon />
+      <AlertContent>
+        <AlertTitle>Plot Twist: This Alert is Actually Amber!</AlertTitle>
+        <AlertDescription>This one has custom colors for light and dark mode.</AlertDescription>
+      </AlertContent>
+    </Alert>
+  )
+}
+```
+
+### Different Alert Types
+
+You can create different types of alerts by using different icons and custom styling:
+
+```tsx
+import { Alert, AlertContent, AlertDescription, AlertTitle } from "@vela-ui/react"
+import { CircleAlertIcon, CircleCheckIcon, CircleXIcon, InfoIcon } from "lucide-react"
+
+export function AlertTypes() {
+  return (
+    <div className="space-y-4">
+      {/* Success Alert */}
+      <Alert className="border-green-900 bg-green-50 text-green-900 dark:border-green-950 dark:bg-green-950 dark:text-green-100">
+        <CircleCheckIcon />
+        <AlertContent>
+          <AlertTitle>Success</AlertTitle>
+          <AlertDescription>Your operation completed successfully.</AlertDescription>
+        </AlertContent>
+      </Alert>
+
+      {/* Error Alert */}
+      <Alert className="border-red-900 bg-red-50 text-red-900 dark:border-red-950 dark:bg-red-950 dark:text-red-100">
+        <CircleXIcon />
+        <AlertContent>
+          <AlertTitle>Error</AlertTitle>
+          <AlertDescription>Something went wrong. Please try again.</AlertDescription>
+        </AlertContent>
+      </Alert>
+
+      {/* Warning Alert */}
+      <Alert className="border-yellow-900 bg-yellow-50 text-yellow-900 dark:border-yellow-950 dark:bg-yellow-950 dark:text-yellow-100">
+        <CircleAlertIcon />
+        <AlertContent>
+          <AlertTitle>Warning</AlertTitle>
+          <AlertDescription>Please review your input before proceeding.</AlertDescription>
+        </AlertContent>
+      </Alert>
+
+      {/* Info Alert */}
+      <Alert className="border-blue-900 bg-blue-50 text-blue-900 dark:border-blue-950 dark:bg-blue-950 dark:text-blue-100">
+        <InfoIcon />
+        <AlertContent>
+          <AlertTitle>Information</AlertTitle>
+          <AlertDescription>Here's some helpful information for you.</AlertDescription>
+        </AlertContent>
+      </Alert>
+    </div>
+  )
+}
+```
+
+## Accessibility
+
+The Alert component includes proper accessibility features:
+
+- Uses `role="alert"` to announce the message to screen readers
+- Provides semantic structure with separate title and description elements
+- Supports keyboard navigation and focus management
+- Maintains proper color contrast ratios for text readability
+
+# Avatar
+
+An image element with a fallback for representing the user.
+
+## Props
+
+**Avatar Props**
+
+- Extends: `React.ComponentProps<"span">`
+- **`size`**
+  - Type: "sm" | "md" | "lg"
+  - Default: "md"
+  - Description: The size of the avatar.
+- **`shape`**
+  - Type: "circle" | "square"
+  - Default: "circle"
+  - Description: The shape of the avatar.
+
+**AvatarImage Props**
+
+- Extends: `React.ComponentProps<"img">`
+- **`src`**
+  - Type: string
+  - Description: The source URL of the image.
+- **`alt`**
+  - Type: string
+  - Description: Alternative text for the image.
+- **`onLoadingStatusChange`**
+  - Type: (status: ImageLoadingStatus) => void
+  - Description: Callback fired when the image loading status changes.
+
+**AvatarFallback Props**
+
+- Extends: `React.ComponentProps<"span">`
+- **`delayMs`**
+  - Type: number
+  - Description: Delay in milliseconds before showing the fallback.
+
+## Example
+
+Here's a basic example of how to use the Avatar component:
+
+```tsx
+import { Avatar, AvatarFallback, AvatarImage } from "@vela-ui/react"
+
+export function Basic() {
+  return (
+    <Avatar>
+      <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+      <AvatarFallback>CN</AvatarFallback>
+    </Avatar>
+  )
+}
+```
+
+### Sizes
+
+The Avatar component supports different sizes:
+
+```tsx
+import { Avatar, AvatarFallback, AvatarImage } from "@vela-ui/react"
+
+export function Sizes() {
+  return (
+    <div className="flex items-center gap-4">
+      <Avatar size="sm">
+        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
+      <Avatar size="md">
+        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
+      <Avatar size="lg">
+        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
+    </div>
+  )
+}
+```
+
+### Shapes
+
+The Avatar component supports different shapes:
+
+```tsx
+import { Avatar, AvatarFallback, AvatarImage } from "@vela-ui/react"
+
+export function Shapes() {
+  return (
+    <div className="flex items-center gap-4">
+      <Avatar shape="circle">
+        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
+      <Avatar shape="square">
+        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
+    </div>
+  )
+}
+```
+
+### Fallback Only
+
+You can use Avatar with only a fallback (no image):
+
+```tsx
+import { Avatar, AvatarFallback } from "@vela-ui/react"
+
+export function FallbackOnly() {
+  return (
+    <Avatar>
+      <AvatarFallback>JD</AvatarFallback>
+    </Avatar>
+  )
+}
+```
+
+### Image Loading States
+
+The Avatar component automatically handles image loading states:
+
+```tsx
+import { Avatar, AvatarFallback, AvatarImage } from "@vela-ui/react"
+
+export function LoadingStates() {
+  return (
+    <div className="flex items-center gap-4">
+      {/* Image loads successfully */}
+      <Avatar>
+        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
+
+      {/* Image fails to load */}
+      <Avatar>
+        <AvatarImage src="https://broken-link.png" alt="Broken" />
+        <AvatarFallback>BL</AvatarFallback>
+      </Avatar>
+
+      {/* No image provided */}
+      <Avatar>
+        <AvatarFallback>NF</AvatarFallback>
+      </Avatar>
+    </div>
+  )
+}
+```
+
+### Avatar Group
+
+You can create avatar groups with overlapping styles:
+
+```tsx
+import { Avatar, AvatarFallback, AvatarImage } from "@vela-ui/react"
+
+export function Group() {
+  return (
+    <div className="flex -space-x-2">
+      <Avatar className="ring-background ring-2">
+        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
+      <Avatar className="ring-background ring-2">
+        <AvatarImage src="https://github.com/leerob.png" alt="@leerob" />
+        <AvatarFallback>LR</AvatarFallback>
+      </Avatar>
+      <Avatar className="ring-background ring-2">
+        <AvatarImage src="https://github.com/evilrabbit.png" alt="@evilrabbit" />
+        <AvatarFallback>ER</AvatarFallback>
+      </Avatar>
+    </div>
+  )
+}
+```
+
+### Custom Fallback Content
+
+You can customize the fallback content with icons or other elements:
+
+```tsx
+import { Avatar, AvatarFallback, AvatarImage } from "@vela-ui/react"
+import { UserIcon } from "lucide-react"
+
+export function CustomFallback() {
+  return (
+    <div className="flex items-center gap-4">
+      <Avatar>
+        <AvatarImage src="https://broken-link.png" alt="User" />
+        <AvatarFallback>
+          <UserIcon className="size-4" />
+        </AvatarFallback>
+      </Avatar>
+      <Avatar>
+        <AvatarImage src="https://broken-link.png" alt="User" />
+        <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-white">
+          AB
+        </AvatarFallback>
+      </Avatar>
+    </div>
+  )
+}
+```
+
+### Delayed Fallback
+
+You can delay the appearance of the fallback to prevent flickering:
+
+```tsx
+import { Avatar, AvatarFallback, AvatarImage } from "@vela-ui/react"
+
+export function DelayedFallback() {
+  return (
+    <Avatar>
+      <AvatarImage src="https://slow-loading-image.png" alt="Slow loading" />
+      <AvatarFallback delayMs={300}>SL</AvatarFallback>
+    </Avatar>
+  )
+}
+```
+
+## Accessibility
+
+The Avatar component includes proper accessibility features:
+
+- Provides alternative text through the `alt` attribute on images
+- Uses semantic HTML elements for proper screen reader support
+- Maintains proper focus management and keyboard navigation
+- Supports custom fallback content for better user experience
+
+# Badge
+
+A badge is a small component that can be used to display a count or a status.
+
+## Props
+
+**Badge Props**
+
+- Extends: `React.ComponentProps<"span">`
+- **`variant`**
+  - Type: "neutral" | "primary" | "secondary" | "accent" | "destructive" | "outline"
+  - Default: "primary"
+  - Description: The visual style variant of the badge.
+
+## Example
+
+Here's a basic example of how to use the Badge component:
+
+```tsx
+import { Badge } from "@vela-ui/react"
+
+export function Basic() {
+  return <Badge>Default</Badge>
+}
+```
+
+### Variants
+
+The Badge component supports different visual variants:
+
+```tsx
+import { Badge } from "@vela-ui/react"
+
+export function Variants() {
+  return (
+    <div className="flex items-center gap-2">
+      <Badge variant="primary">Primary</Badge>
+      <Badge variant="secondary">Secondary</Badge>
+      <Badge variant="accent">Accent</Badge>
+      <Badge variant="neutral">Neutral</Badge>
+      <Badge variant="destructive">Destructive</Badge>
+      <Badge variant="outline">Outline</Badge>
+    </div>
+  )
+}
+```
+
+### With Icon
+
+You can include icons in badges:
+
+```tsx
+import { Badge } from "@vela-ui/react"
+import { HeartIcon } from "lucide-react"
+
+export function WithIcon() {
+  return (
+    <div className="flex items-center gap-2">
+      <Badge>
+        <HeartIcon />
+        Badge
+      </Badge>
+      <Badge variant="secondary">
+        <HeartIcon />
+        Badge
+      </Badge>
+      <Badge variant="destructive">
+        <HeartIcon />
+        Badge
+      </Badge>
+      <Badge variant="outline">
+        <HeartIcon />
+        Badge
+      </Badge>
+    </div>
+  )
+}
+```
+
+### With Button
+
+Badges can be used inside buttons to show counts or status:
+
+```tsx
+import { Badge, Button } from "@vela-ui/react"
+
+export function WithButton() {
+  return (
+    <div className="flex items-center gap-2">
+      <Button variant="outline">
+        Inbox
+        <Badge>+99</Badge>
+      </Button>
+      <Button variant="outline">
+        Messages
+        <Badge variant="destructive">3</Badge>
+      </Button>
+      <Button variant="outline">
+        Notifications
+        <Badge variant="secondary">12</Badge>
+      </Button>
+    </div>
+  )
+}
+```
+
+### Custom Styles
+
+You can customize the appearance of badges using custom CSS classes:
+
+```tsx
+import { Badge } from "@vela-ui/react"
+import { HeartIcon } from "lucide-react"
+
+export function CustomStyles() {
+  return (
+    <div className="flex items-center gap-2">
+      <Badge className="h-8 px-4 text-base [&>svg]:size-4">
+        <HeartIcon />
+        Large
+      </Badge>
+      <Badge className="bg-gradient-to-r from-blue-500 to-purple-600 text-white">Gradient</Badge>
+      <Badge className="border-amber-200 bg-amber-100 text-amber-800">Custom</Badge>
+    </div>
+  )
+}
+```
+
+### Count Badges
+
+Use badges to display counts or numbers:
+
+```tsx
+import { Badge } from "@vela-ui/react"
+
+export function CountBadges() {
+  return (
+    <div className="flex items-center gap-2">
+      <Badge>1</Badge>
+      <Badge variant="secondary">5</Badge>
+      <Badge variant="destructive">99+</Badge>
+      <Badge variant="outline">New</Badge>
+    </div>
+  )
+}
+```
+
+# Button
+
+A button allows a user to perform an action, with mouse, touch, and keyboard interactions.
+
+[Button docs](https://react-spectrum.adobe.com/react-aria/Button.html)
+
+## Props
+
+**`isDisabled`**
+Type: boolean
+Default: false
+Description: Whether the button is disabled.
+
+**`isPending`**
+Type: boolean
+Default: false
+Description: Whether the button is in a pending state.
+
+**`autoFocus`**
+Type: boolean
+Default: false
+Description: Whether the element should receive focus on render.
+
+**`type`**
+Type: "button" | "submit" | "reset"
+Default: "button"
+Description: The behavior of the button when used in an HTML form.
+
+**`variant`**
+Type: "neutral" | "primary" | "secondary" | "destructive" | "outline" | "ghost" | "link"
+Default: "primary"
+Description: The variant of the button.
+
+**`size`**
+Type: "xs" | "sm" | "md" | "lg" | "xl"
+Default: "md"
+Description: The size of the button.
+
+**`shape`**
+Type: "rectangle" | "square" | "circle"
+Default: "rectangle"
+Description: The shape of the button.
+
+**`loader`**
+Type: React.ReactNode
+Default: <Loader />
+Description: The loader to display when the button is in a pending state.
+
+## Example
+
+Here's a basic example of how to use the Button component:
+
+```tsx
+import { Button } from "@vela-ui/react"
+
+export function Basic() {
+  return <Button onPress={() => alert("Hello world!")}>Press me</Button>
+}
+```
+
+### Disabled
+
+A Button can be disabled using the isDisabled prop.
+
+```tsx
+import { Button } from "@vela-ui/react"
+
+export function Disabled() {
+  return <Button isDisabled>Disabled</Button>
+}
+```
+
+### Pending
+
+A Button can be put into a pending state using the isPending prop. This is useful when an action takes a long time to complete, and you want to provide feedback to the user that the action is in progress.
+
+```tsx
+import { Button } from "@vela-ui/react"
+
+export function Pending() {
+  return <Button isPending>Pending</Button>
+}
+```
+
+### Loader
+
+A Button can display a loader when in a pending state.
+
+```tsx
+import { Button, Loader } from "@vela-ui/react"
+
+export function Loader() {
+  return (
+    <Button isPending loader={<Loader />}>
+      Pending
+    </Button>
+  )
+  return (
+    <Button isPending loader={<Loader variant="ring" />}>
+      Pending
+    </Button>
+  )
+  return (
+    <Button isPending loader={<Loader variant="spin" />}>
+      Pending
+    </Button>
+  )
+}
+```
+
+# Card
+
+Displays a card with header, content, and footer.
+
+## Props
+
+**Card Props**
+
+- Extends: `React.ComponentProps<"div">`
+- Description: The main container for the card component.
+
+**CardHeader Props**
+
+- Extends: `React.ComponentProps<"div">`
+- Description: Container for the card header including title, description, and action.
+
+**CardTitle Props**
+
+- Extends: `React.ComponentProps<"div">`
+- Description: The title of the card.
+
+**CardDescription Props**
+
+- Extends: `React.ComponentProps<"div">`
+- Description: The description text of the card.
+
+**CardAction Props**
+
+- Extends: `React.ComponentProps<"div">`
+- Description: Container for action buttons in the card header.
+
+**CardContent Props**
+
+- Extends: `React.ComponentProps<"div">`
+- Description: The main content area of the card.
+
+**CardFooter Props**
+
+- Extends: `React.ComponentProps<"div">`
+- Description: Container for footer content and actions.
+
+## Example
+
+Here's a basic example of how to use the Card component:
+
+```tsx
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@vela-ui/react"
+
+export function Basic() {
+  return (
+    <Card className="w-full max-w-sm">
+      <CardHeader>
+        <CardTitle>Card Title</CardTitle>
+        <CardDescription>Card description goes here.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Card content goes here.</p>
+      </CardContent>
+    </Card>
+  )
+}
+```
+
+### With Action
+
+A Card can include action buttons in the header:
+
+```tsx
+import {
+  Button,
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@vela-ui/react"
+
+export function WithAction() {
+  return (
+    <Card className="w-full max-w-sm">
+      <CardHeader>
+        <CardTitle>Login to your account</CardTitle>
+        <CardDescription>Enter your email below to login to your account</CardDescription>
+        <CardAction>
+          <Button variant="link">Sign Up</Button>
+        </CardAction>
+      </CardHeader>
+      <CardContent>
+        <p>Login form content would go here.</p>
+      </CardContent>
+    </Card>
+  )
+}
+```
+
+### With Footer
+
+A Card can include a footer with additional actions:
+
+```tsx
+import {
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@vela-ui/react"
+
+export function WithFooter() {
+  return (
+    <Card className="w-full max-w-sm">
+      <CardHeader>
+        <CardTitle>Product Name</CardTitle>
+        <CardDescription>Product description goes here.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p>Product details and information.</p>
+      </CardContent>
+      <CardFooter className="flex-col gap-2">
+        <Button className="w-full">Add to Cart</Button>
+        <Button variant="outline" className="w-full">
+          Learn More
+        </Button>
+      </CardFooter>
+    </Card>
+  )
+}
+```
+
+### Complete Form Card
+
+A complete example with a login form:
+
+```tsx
+import {
+  Button,
+  Card,
+  CardAction,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  Input,
+  Label,
+} from "@vela-ui/react"
+
+export function LoginCard() {
+  return (
+    <Card className="w-full max-w-sm">
+      <CardHeader>
+        <CardTitle>Login to your account</CardTitle>
+        <CardDescription>Enter your email below to login to your account</CardDescription>
+        <CardAction>
+          <Button variant="link">Sign Up</Button>
+        </CardAction>
+      </CardHeader>
+      <CardContent>
+        <form>
+          <div className="flex flex-col gap-6">
+            <div className="grid gap-2">
+              <Label htmlFor="email">Email</Label>
+              <Input id="email" type="email" placeholder="m@example.com" required />
+            </div>
+            <div className="grid gap-2">
+              <div className="flex items-center">
+                <Label htmlFor="password">Password</Label>
+                <a
+                  href="#"
+                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                >
+                  Forgot your password?
+                </a>
+              </div>
+              <Input id="password" type="password" required />
+            </div>
+          </div>
+        </form>
+      </CardContent>
+      <CardFooter className="flex-col gap-2">
+        <Button type="submit" className="w-full">
+          Login
+        </Button>
+        <Button variant="outline" className="w-full">
+          Login with Google
+        </Button>
+      </CardFooter>
+    </Card>
+  )
+}
+```
+
+### Product Card
+
+An example of a product card:
+
+```tsx
+import {
+  Badge,
+  Button,
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@vela-ui/react"
+import { HeartIcon, StarIcon } from "lucide-react"
+
+export function ProductCard() {
+  return (
+    <Card className="w-full max-w-sm">
+      <CardHeader>
+        <div className="flex items-center justify-between">
+          <Badge variant="secondary">New</Badge>
+          <Button variant="ghost" size="sm" shape="square">
+            <HeartIcon className="size-4" />
+          </Button>
+        </div>
+        <CardTitle>Product Name</CardTitle>
+        <CardDescription>High-quality product description</CardDescription>
+        <div className="flex items-center gap-1">
+          {[...Array(5)].map((_, i) => (
+            <StarIcon key={i} className="size-4 fill-yellow-400 text-yellow-400" />
+          ))}
+          <span className="text-muted-foreground ml-2 text-sm">(4.8)</span>
+        </div>
+      </CardHeader>
+      <CardContent>
+        <div className="bg-muted mb-4 aspect-square rounded-lg"></div>
+        <p className="text-muted-foreground text-sm">Product features and benefits go here.</p>
+      </CardContent>
+      <CardFooter className="flex-col gap-2">
+        <div className="flex w-full items-center justify-between">
+          <span className="text-2xl font-bold">$99.99</span>
+          <span className="text-muted-foreground text-sm line-through">$129.99</span>
+        </div>
+        <Button className="w-full">Add to Cart</Button>
+      </CardFooter>
+    </Card>
+  )
+}
+```
+
+### Custom Styling
+
+You can customize the appearance of cards using custom CSS classes:
+
+```tsx
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@vela-ui/react"
+
+export function CustomStyling() {
+  return (
+    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      <Card className="border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-100">
+        <CardHeader>
+          <CardTitle className="text-blue-900">Blue Theme</CardTitle>
+          <CardDescription className="text-blue-700">A card with blue theming</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="text-blue-800">Content with blue theme styling.</p>
+        </CardContent>
+      </Card>
+
+      <Card className="border-green-200 bg-gradient-to-br from-green-50 to-emerald-100">
+        <CardHeader>
+          <CardTitle className="text-green-900">Green Theme</CardTitle>
+          <CardDescription className="text-green-700">A card with green theming</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="text-green-800">Content with green theme styling.</p>
+        </CardContent>
+      </Card>
+
+      <Card className="border-purple-200 bg-gradient-to-br from-purple-50 to-violet-100">
+        <CardHeader>
+          <CardTitle className="text-purple-900">Purple Theme</CardTitle>
+          <CardDescription className="text-purple-700">A card with purple theming</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <p className="text-purple-800">Content with purple theme styling.</p>
+        </CardContent>
+      </Card>
+    </div>
+  )
+}
+```
+
+## Accessibility
+
+The Card component includes proper accessibility features:
+
+- Uses semantic HTML elements for proper screen reader support
+- Maintains proper color contrast ratios for text readability
+- Supports keyboard navigation and focus management
+- Provides clear visual hierarchy and content structure
+- Works well with form elements and interactive components
+
+# Link
+
+A link allows a user to navigate to another page or resource within a web page or application.
+
+[Link docs](https://react-spectrum.adobe.com/react-aria/Link.html)
+
+## Props
+
+**`variant`**
+Type: "hover" | "underline" | "none"
+Default: "hover"
+Description: The visual style variant of the link.
+
+**`isDisabled`**
+Type: boolean
+Default: false
+Description: Whether the link is disabled.
+
+**`href`**
+Type: string
+Description: The URL that the link points to.
+
+**`target`**
+Type: "\_blank" | "\_self" | "\_parent" | "\_top"
+Description: Where to display the linked URL.
+
+**`rel`**
+Type: string
+Description: The relationship between the linked resource and the current page.
+
+**`download`**
+Type: boolean | string
+Default: false
+Description: Whether the link should be downloaded when clicked.
+
+## Example
+
+Here's a basic example of how to use the Link component:
+
+```tsx
+import { Link } from "@vela-ui/react"
+
+export function Basic() {
+  return (
+    <Link href="https://tailwindcss.com" target="_blank">
+      Visit Tailwind CSS
+    </Link>
+  )
+}
+```
+
+### Variants
+
+The Link component supports different visual variants:
+
+```tsx
+import { Link } from "@vela-ui/react"
+
+export function Variants() {
+  return (
+    <div className="flex items-center gap-4">
+      <Link href="#" variant="hover">
+        Hover underline
+      </Link>
+      <Link href="#" variant="underline">
+        Always underlined
+      </Link>
+      <Link href="#" variant="none">
+        No underline
+      </Link>
+    </div>
+  )
+}
+```
+
+### Disabled
+
+A Link can be disabled using the isDisabled prop:
+
+```tsx
+import { Link } from "@vela-ui/react"
+
+export function Disabled() {
+  return (
+    <Link href="#" isDisabled>
+      Disabled Link
+    </Link>
+  )
+}
+```
+
+### External Link
+
+For external links, you can use the target and rel props:
+
+```tsx
+import { Link } from "@vela-ui/react"
+
+export function External() {
+  return (
+    <Link
+      href="https://react-spectrum.adobe.com/react-aria/Link.html"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      React Aria Link Documentation
+    </Link>
+  )
+}
+```
+
+# LinkButton
+
+A LinkButton combines the functionality of a Link with the visual appearance of a Button. It's useful when you want a button-like appearance that navigates to another page or resource.
+
+## Props
+
+**`variant`**
+Type: "neutral" | "primary" | "secondary" | "accent" | "destructive" | "outline" | "ghost" | "link"
+Default: "primary"
+Description: The visual style variant of the link button.
+
+**`size`**
+Type: "xs" | "sm" | "md" | "lg" | "xl"
+Default: "md"
+Description: The size of the link button.
+
+**`shape`**
+Type: "rectangle" | "square" | "circle"
+Default: "rectangle"
+Description: The shape of the link button.
+
+**`isDisabled`**
+Type: boolean
+Default: false
+Description: Whether the link button is disabled.
+
+**`href`**
+Type: string
+Description: The URL that the link button points to.
+
+**`target`**
+Type: "\_blank" | "\_self" | "\_parent" | "\_top"
+Description: Where to display the linked URL.
+
+**`rel`**
+Type: string
+Description: The relationship between the current document and the linked document.
+
+## Example
+
+Here's a basic example of how to use the LinkButton component:
+
+```tsx
+import { LinkButton } from "@vela-ui/react"
+
+export function Basic() {
+  return <LinkButton href="/dashboard">Go to Dashboard</LinkButton>
+}
+```
+
+### Variants
+
+The LinkButton component supports all the same variants as the Button component:
+
+```tsx
+import { LinkButton } from "@vela-ui/react"
+
+export function Variants() {
+  return (
+    <div className="flex flex-wrap items-center gap-3">
+      <LinkButton href="#" variant="primary">
+        Primary
+      </LinkButton>
+      <LinkButton href="#" variant="secondary">
+        Secondary
+      </LinkButton>
+      <LinkButton href="#" variant="outline">
+        Outline
+      </LinkButton>
+      <LinkButton href="#" variant="ghost">
+        Ghost
+      </LinkButton>
+      <LinkButton href="#" variant="destructive">
+        Destructive
+      </LinkButton>
+    </div>
+  )
+}
+```
+
+### Sizes
+
+The LinkButton component supports different sizes:
+
+```tsx
+import { LinkButton } from "@vela-ui/react"
+
+export function Sizes() {
+  return (
+    <div className="flex items-center gap-3">
+      <LinkButton href="#" size="xs">
+        Extra Small
+      </LinkButton>
+      <LinkButton href="#" size="sm">
+        Small
+      </LinkButton>
+      <LinkButton href="#" size="md">
+        Medium
+      </LinkButton>
+      <LinkButton href="#" size="lg">
+        Large
+      </LinkButton>
+      <LinkButton href="#" size="xl">
+        Extra Large
+      </LinkButton>
+    </div>
+  )
+}
+```
+
+### Shapes
+
+The LinkButton component supports different shapes:
+
+```tsx
+import { LinkButton } from "@vela-ui/react"
+
+export function Shapes() {
+  return (
+    <div className="flex items-center gap-3">
+      <LinkButton href="#" shape="rectangle">
+        Rectangle
+      </LinkButton>
+      <LinkButton href="#" shape="square">
+        Square
+      </LinkButton>
+      <LinkButton href="#" shape="circle">
+        Circle
+      </LinkButton>
+    </div>
+  )
+}
+```
+
+### Disabled
+
+A LinkButton can be disabled using the isDisabled prop:
+
+```tsx
+import { LinkButton } from "@vela-ui/react"
+
+export function Disabled() {
+  return (
+    <LinkButton href="#" isDisabled>
+      Disabled Link Button
+    </LinkButton>
+  )
+}
+```
+
+# Checkbox & CheckboxGroup
+
+A checkbox allows a user to select multiple items from a list of individual items, or to mark one individual item as selected.
+
+[Checkbox docs](https://react-spectrum.adobe.com/react-aria/Checkbox.html)
+
+A checkbox group allows a user to select multiple items from a list of options.
+
+[CheckboxGroup docs](https://react-spectrum.adobe.com/react-aria/CheckboxGroup.html)
+
+## Props
+
+**Checkbox Props**
+
+- Extends: `React.ComponentProps<typeof AriaCheckbox>`
+- **`size`**
+  - Type: "sm" | "md" | "lg"
+  - Default: "md"
+  - Description: The size of the checkbox.
+- **`isDisabled`**
+  - Type: boolean
+  - Default: false
+  - Description: Whether the checkbox is disabled.
+- **`isIndeterminate`**
+  - Type: boolean
+  - Default: false
+  - Description: Whether the checkbox is in an indeterminate state.
+- **`indicatorClassName`**
+  - Type: string
+  - Description: Custom CSS classes for the checkbox indicator.
+
+**CheckboxGroup Props**
+
+- Extends: `React.ComponentProps<typeof AriaCheckboxGroup>`
+- **`label`**
+  - Type: string
+  - Description: The label for the checkbox group.
+- **`description`**
+  - Type: string
+  - Description: A description for the checkbox group.
+- **`errorMessage`**
+  - Type: string | ((validation: ValidationResult) => string)
+  - Description: Error message to display when validation fails.
+
+**CheckboxGroupRoot Props**
+
+- Extends: `React.ComponentProps<typeof AriaCheckboxGroup>`
+- Description: The root container for checkbox group without built-in label and description.
+
+## Example
+
+Here's a basic example of how to use the Checkbox component:
+
+```tsx
+import { Checkbox } from "@vela-ui/react"
+
+export function Basic() {
+  return <Checkbox>Checkbox</Checkbox>
+}
+```
+
+### Checkbox States
+
+The Checkbox component supports different states:
+
+```tsx
+import { Checkbox } from "@vela-ui/react"
+
+export function States() {
+  return (
+    <div className="flex flex-col gap-2">
+      <Checkbox>Unchecked</Checkbox>
+      <Checkbox defaultSelected>Checked</Checkbox>
+      <Checkbox isIndeterminate>Indeterminate</Checkbox>
+      <Checkbox isDisabled>Disabled</Checkbox>
+    </div>
+  )
+}
+```
+
+### Checkbox Sizes
+
+The Checkbox component supports different sizes:
+
+```tsx
+import { Checkbox } from "@vela-ui/react"
+
+export function Sizes() {
+  return (
+    <div className="flex flex-col gap-2">
+      <Checkbox size="sm">Small</Checkbox>
+      <Checkbox size="md">Medium</Checkbox>
+      <Checkbox size="lg">Large</Checkbox>
+    </div>
+  )
+}
+```
+
+### CheckboxGroup
+
+Here's how to use CheckboxGroup with multiple checkboxes:
+
+```tsx
+import { Checkbox, CheckboxGroup } from "@vela-ui/react"
+
+export function BasicGroup() {
+  return (
+    <CheckboxGroup label="Cities" description="Select your favorite cities">
+      <Checkbox value="sf">San Francisco</Checkbox>
+      <Checkbox value="ny">New York</Checkbox>
+      <Checkbox value="sydney">Sydney</Checkbox>
+      <Checkbox value="london">London</Checkbox>
+      <Checkbox value="tokyo">Tokyo</Checkbox>
+    </CheckboxGroup>
+  )
+}
+```
+
+### CheckboxGroup with Validation
+
+A CheckboxGroup can include validation:
+
+```tsx
+import { Button, Checkbox, CheckboxGroup, Form } from "@vela-ui/react"
+
+export function WithValidation() {
+  return (
+    <Form className="flex flex-col items-start gap-4">
+      <CheckboxGroup
+        label="Required Selection"
+        description="Please select at least one option"
+        isRequired
+        errorMessage="Please select at least one option"
+      >
+        <Checkbox value="option1">Option 1</Checkbox>
+        <Checkbox value="option2">Option 2</Checkbox>
+        <Checkbox value="option3">Option 3</Checkbox>
+      </CheckboxGroup>
+      <Button type="submit">Submit</Button>
+    </Form>
+  )
+}
+```
+
+### Disabled CheckboxGroup
+
+A CheckboxGroup can be disabled:
+
+```tsx
+import { Checkbox, CheckboxGroup } from "@vela-ui/react"
+
+export function DisabledGroup() {
+  return (
+    <CheckboxGroup label="Disabled Group" isDisabled>
+      <Checkbox value="option1">Option 1</Checkbox>
+      <Checkbox value="option2">Option 2</Checkbox>
+      <Checkbox value="option3">Option 3</Checkbox>
+    </CheckboxGroup>
+  )
+}
+```
+
+### Custom Styling
+
+You can customize the appearance of checkboxes:
+
+```tsx
+import { Checkbox, cn } from "@vela-ui/react"
+
+export function CustomStyling() {
+  return (
+    <Checkbox
+      className={({ isSelected }) =>
+        cn(
+          "hover:bg-accent/50 flex items-start gap-3 rounded-lg border p-3 text-sm leading-none font-medium select-none",
+          {
+            "border-blue-600 bg-blue-50 dark:border-blue-900 dark:bg-blue-950 [&_[data-slot=checkbox-indicator]]:border-blue-600 [&_[data-slot=checkbox-indicator]]:bg-blue-600 [&_[data-slot=checkbox-indicator]]:text-white":
+              isSelected,
+          },
+        )
+      }
+    >
+      <div className="grid gap-1.5 font-normal">
+        <p className="text-sm leading-none font-medium">Enable notifications</p>
+        <p className="text-muted-foreground text-sm">
+          You can enable or disable notifications at any time.
+        </p>
+      </div>
+    </Checkbox>
+  )
+}
+```
+
+### Custom Indicator Colors
+
+You can customize the indicator colors for different checkboxes:
+
+```tsx
+import { Checkbox, CheckboxGroup } from "@vela-ui/react"
+
+export function CustomColors() {
+  return (
+    <CheckboxGroup label="Favorite color" description="Choose your favorite color">
+      <div className="flex gap-4">
+        <Checkbox
+          value="blue"
+          size="lg"
+          indicatorClassName="group-data-[selected=true]:bg-blue-500 group-data-[selected=true]:border-none"
+        >
+          Blue
+        </Checkbox>
+        <Checkbox
+          value="green"
+          size="lg"
+          indicatorClassName="group-data-[selected=true]:bg-green-500 group-data-[selected=true]:border-none"
+        >
+          Green
+        </Checkbox>
+        <Checkbox
+          value="red"
+          size="lg"
+          indicatorClassName="group-data-[selected=true]:bg-red-500 group-data-[selected=true]:border-none"
+        >
+          Red
+        </Checkbox>
+      </div>
+    </CheckboxGroup>
+  )
+}
+```
+
+### CheckboxGroupRoot
+
+Use CheckboxGroupRoot when you need more control over the layout:
+
+```tsx
+import { Checkbox, CheckboxGroupRoot } from "@vela-ui/react"
+
+export function RootComponent() {
+  return (
+    <div className="flex flex-col gap-4">
+      <h3 className="text-sm font-medium">Favorite Sport</h3>
+      <CheckboxGroupRoot aria-label="Favorite sport">
+        <Checkbox value="soccer">Soccer</Checkbox>
+        <Checkbox value="baseball">Baseball</Checkbox>
+        <Checkbox value="basketball">Basketball</Checkbox>
+      </CheckboxGroupRoot>
+    </div>
+  )
+}
+```
+
+### Form Integration
+
+Checkboxes work well with forms:
+
+```tsx
+import { Button, Checkbox, CheckboxGroup, Form, Input, Label } from "@vela-ui/react"
+
+export function FormIntegration() {
+  return (
+    <Form className="flex flex-col gap-6">
+      <div className="grid gap-2">
+        <Label htmlFor="email">Email</Label>
+        <Input id="email" type="email" placeholder="m@example.com" required />
+      </div>
+
+      <CheckboxGroup label="Preferences" description="Select your preferences">
+        <Checkbox value="newsletter">Subscribe to newsletter</Checkbox>
+        <Checkbox value="notifications">Enable notifications</Checkbox>
+        <Checkbox value="marketing">Receive marketing emails</Checkbox>
+      </CheckboxGroup>
+
+      <Button type="submit">Submit</Button>
+    </Form>
+  )
+}
+```
+
+## Accessibility
+
+The Checkbox and CheckboxGroup components include proper accessibility features:
+
+- Uses semantic HTML elements for proper screen reader support
+- Maintains proper color contrast ratios for text readability
+- Supports keyboard navigation and focus management
+- Provides clear visual hierarchy and state indication
+- Works well with form elements and validation
+- Supports ARIA attributes for screen readers
+- Handles indeterminate state properly
+
+# Combobox
+
+A combo box combines a text input with a listbox, allowing users to filter a list of options to items matching a query.
+
+[Combobox docs](https://react-spectrum.adobe.com/react-aria/Combobox.html)
+
+## Props
+
+**Combobox Props**
+
+- Extends: `AriaComboBoxProps<T>` and `FieldProps`
+- **`label`**
+  - Type: string
+  - Description: The label for the combobox.
+- **`description`**
+  - Type: string
+  - Description: A description for the combobox.
+- **`errorMessage`**
+  - Type: string | ((validation: ValidationResult) => string)
+  - Description: Error message to display when validation fails.
+
+**ComboboxInput Props**
+
+- Extends: `React.ComponentProps<typeof Input>`
+- **`endElement`**
+  - Type: React.ReactNode
+  - Description: Custom end element for the input.
+- **`endElementProps`**
+  - Type: React.ComponentProps<typeof Button>
+  - Description: Props for the end element button.
+
+## Example
+
+Here's a basic example of how to use the Combobox component:
+
+```tsx
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+  ComboboxPopover,
+} from "@vela-ui/react"
+
+export function Basic() {
+  const items = ["Apple", "Banana", "Orange", "Grapes"]
+
+  return (
+    <Combobox className="w-64" placeholder="Select a fruit" label="Favorite Fruit">
+      <ComboboxInput />
+      <ComboboxPopover>
+        <ComboboxList>
+          {items.map((item) => (
+            <ComboboxItem key={item}>{item}</ComboboxItem>
+          ))}
+        </ComboboxList>
+      </ComboboxPopover>
+    </Combobox>
+  )
+}
+```
+
+### With Sections
+
+A Combobox can include sections to group related items:
+
+```tsx
+import {
+  Combobox,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+  ComboboxPopover,
+  ComboboxSection,
+} from "@vela-ui/react"
+
+export function WithSections() {
+  const options = [
+    {
+      name: "Fruit",
+      children: [{ name: "Apple" }, { name: "Banana" }, { name: "Orange" }],
+    },
+    {
+      name: "Vegetable",
+      children: [{ name: "Cabbage" }, { name: "Broccoli" }, { name: "Carrots" }],
+    },
+  ]
+
+  return (
+    <Combobox className="w-64" placeholder="Select an item" label="Food Category">
+      <ComboboxInput />
+      <ComboboxPopover>
+        <ComboboxList>
+          {options.map((section) => (
+            <ComboboxSection key={section.name} title={section.name}>
+              {section.children.map((item) => (
+                <ComboboxItem key={item.name}>{item.name}</ComboboxItem>
+              ))}
+            </ComboboxSection>
+          ))}
+        </ComboboxList>
+      </ComboboxPopover>
+    </Combobox>
+  )
+}
+```
+
+### With Descriptions
+
+Items can include descriptions:
+
+```tsx
+import {
+  Combobox,
+  ComboboxDescription,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxLabel,
+  ComboboxList,
+  ComboboxPopover,
+} from "@vela-ui/react"
+
+export function WithDescriptions() {
+  const items = [
+    { name: "Apple", description: "Sweet and crisp fruit" },
+    { name: "Banana", description: "Yellow tropical fruit" },
+    { name: "Orange", description: "Citrus fruit rich in vitamin C" },
+  ]
+
+  return (
+    <Combobox className="w-64" placeholder="Select a fruit" label="Fruit with Description">
+      <ComboboxInput />
+      <ComboboxPopover>
+        <ComboboxList>
+          {items.map((item) => (
+            <ComboboxItem key={item.name}>
+              <ComboboxLabel>{item.name}</ComboboxLabel>
+              <ComboboxDescription>{item.description}</ComboboxDescription>
+            </ComboboxItem>
+          ))}
+        </ComboboxList>
+      </ComboboxPopover>
+    </Combobox>
+  )
+}
+```
+
+# Modal & Dialog
+
+A modal is an overlay element which blocks interaction with elements outside it.
+
+[Modal docs](https://react-spectrum.adobe.com/react-aria/Modal.html)
+
+A dialog is an overlay shown above other content in an application.
+
+[Dialog docs](https://react-spectrum.adobe.com/react-aria/Dialog.html)
+
+## Props
+
+**Modal Props**
+
+- Extends: `React.ComponentProps<typeof AriaModal>`
+- **`size`**
+  - Type: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "full"
+  - Default: "lg"
+  - Description: The size of the modal.
+
+**ModalContent Props**
+
+- Extends: `ModalOverlayProps` and `VariantProps<typeof modalVariants>`
+- **`isDismissable`**
+  - Type: boolean
+  - Default: true
+  - Description: Whether the modal can be dismissed.
+- **`size`**
+  - Type: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "full"
+  - Description: The size of the modal.
+- **`placement`**
+  - Type: "top" | "center" | "bottom"
+  - Default: "center"
+  - Description: The placement of the modal.
+- **`scrollBehavior`**
+  - Type: "inside" | "outside"
+  - Default: "outside"
+  - Description: How the modal handles scrolling.
+- **`isBlurred`**
+  - Type: boolean
+  - Default: false
+  - Description: Whether to blur the background.
+
+**Dialog Props**
+
+- Extends: `ModalContentProps`
+- **`role`**
+  - Type: "dialog" | "alertdialog"
+  - Default: "dialog"
+  - Description: The role of the dialog.
+- **`showCloseButton`**
+  - Type: boolean
+  - Default: true
+  - Description: Whether to show the close button.
+
+## Example
+
+Here's a basic example of how to use the Dialog component:
+
+```tsx
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@vela-ui/react"
+
+export function Basic() {
+  return (
+    <DialogTrigger>
+      <Button variant="outline">Open Dialog</Button>
+      <Dialog>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Edit profile</DialogTitle>
+            <DialogDescription>
+              Make changes to your profile here. Click save when you're done.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-4 py-4">
+            <div className="grid grid-cols-4 items-center gap-4">
+              <label htmlFor="name" className="text-right">
+                Name
+              </label>
+              <input id="name" defaultValue="Pedro Duarte" className="col-span-3" />
+            </div>
+            <div className="grid grid-cols-4 items-center gap-4">
+              <label htmlFor="username" className="text-right">
+                Username
+              </label>
+              <input id="username" defaultValue="@peduarte" className="col-span-3" />
+            </div>
+          </div>
+          <DialogFooter>
+            <Button type="submit">Save changes</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </DialogTrigger>
+  )
+}
+```
+
+### Modal Sizes
+
+Modals support different sizes:
+
+```tsx
+import { Button, ModalContent, useDisclosure } from "@vela-ui/react"
+
+export function ModalSizes() {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure()
+
+  return (
+    <>
+      <Button onPress={onOpen}>Open Modal</Button>
+      <ModalContent isOpen={isOpen} onOpenChange={onOpenChange} size="xl">
+        <div className="p-6">
+          <h2 className="mb-4 text-xl font-semibold">Large Modal</h2>
+          <p>This is a large modal with more content space.</p>
+        </div>
+      </ModalContent>
+    </>
+  )
+}
+```
+
+### Alert Dialog
+
+Use Dialog with alertdialog role for important confirmations:
+
+```tsx
+import {
+  Button,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@vela-ui/react"
+
+export function AlertDialog() {
+  return (
+    <DialogTrigger>
+      <Button variant="destructive">Delete Account</Button>
+      <Dialog role="alertdialog">
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Are you absolutely sure?</DialogTitle>
+            <DialogDescription>
+              This action cannot be undone. This will permanently delete your account and remove
+              your data from our servers.
+            </DialogDescription>
+          </DialogHeader>
+          <DialogFooter>
+            <Button variant="outline">Cancel</Button>
+            <Button variant="destructive">Delete</Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+    </DialogTrigger>
+  )
+}
+```
+
+# Disclosure & DisclosureGroup
+
+A disclosure is a collapsible section of content. It is composed of a header with a heading and trigger button, and a panel that contains the content.
+
+[Disclosure docs](https://react-spectrum.adobe.com/react-aria/Disclosure.html)
+
+A DisclosureGroup is a grouping of related disclosures, sometimes called an accordion. It supports both single and multiple expanded items.
+
+[DisclosureGroup docs](https://react-spectrum.adobe.com/react-aria/DisclosureGroup.html)
+
+## Props
+
+**Disclosure Props**
+
+- Extends: `React.ComponentProps<typeof AriaDisclosure>`
+
+**DisclosureHeader Props**
+
+- Extends: `React.ComponentProps<typeof AriaButton>`
+
+**DisclosurePanel Props**
+
+- Extends: `React.ComponentProps<typeof AriaDisclosurePanel>`
+
+**DisclosureGroup Props**
+
+- Extends: `React.ComponentProps<typeof AriaDisclosureGroup>`
+
+## Example
+
+Here's a basic example of how to use the Disclosure component:
+
+```tsx
+import { Disclosure, DisclosureHeader, DisclosurePanel } from "@vela-ui/react"
+
+export function Basic() {
+  return (
+    <Disclosure className="w-80">
+      <DisclosureHeader>Apples</DisclosureHeader>
+      <DisclosurePanel>
+        Crisp and refreshing fruit. Apples are known for their versatility and nutritional benefits.
+        They come in a variety of flavors and are great for snacking, baking, or adding to salads.
+      </DisclosurePanel>
+    </Disclosure>
+  )
+}
+```
+
+### DisclosureGroup (Accordion)
+
+Use DisclosureGroup to create an accordion:
+
+```tsx
+import { Disclosure, DisclosureGroup, DisclosureHeader, DisclosurePanel } from "@vela-ui/react"
+
+export function Accordion() {
+  return (
+    <DisclosureGroup className="w-80">
+      <Disclosure>
+        <DisclosureHeader>What is React?</DisclosureHeader>
+        <DisclosurePanel>
+          React is a JavaScript library for building user interfaces, particularly web applications.
+        </DisclosurePanel>
+      </Disclosure>
+      <Disclosure>
+        <DisclosureHeader>What is TypeScript?</DisclosureHeader>
+        <DisclosurePanel>
+          TypeScript is a programming language developed by Microsoft. It is a strict syntactical
+          superset of JavaScript.
+        </DisclosurePanel>
+      </Disclosure>
+      <Disclosure>
+        <DisclosureHeader>What is Tailwind CSS?</DisclosureHeader>
+        <DisclosurePanel>
+          Tailwind CSS is a utility-first CSS framework for rapidly building custom user interfaces.
+        </DisclosurePanel>
+      </Disclosure>
+    </DisclosureGroup>
+  )
+}
+```
+
+# Drawer
+
+A drawer is a panel that slides in from the side of the screen.
+
+## Props
+
+**Drawer Props**
+
+- Extends: `React.ComponentProps<typeof AriaModalOverlay>` and `VariantProps<typeof drawerVariants>`
+- **`placement`**
+  - Type: "top" | "bottom" | "left" | "right"
+  - Default: "right"
+  - Description: The placement of the drawer.
+- **`isBlurred`**
+  - Type: boolean
+  - Default: false
+  - Description: Whether to blur the background.
+- **`showCloseButton`**
+  - Type: boolean
+  - Default: true
+  - Description: Whether to show the close button.
+
+**DrawerContent Props**
+
+- Extends: `React.ComponentProps<typeof AriaDialog>`
+
+**DrawerBody Props**
+
+- Extends: `React.ComponentProps<"div">`
+
+**DrawerHeader Props**
+
+- Extends: `React.ComponentProps<"div">`
+
+**DrawerTitle Props**
+
+- Extends: `React.ComponentProps<typeof AriaHeading>`
+
+**DrawerDescription Props**
+
+- Extends: `React.ComponentProps<typeof AriaText>`
+
+**DrawerCloseIcon Props**
+
+- Extends: `React.ComponentProps<typeof Button>`
+
+**DrawerClose Props**
+
+- Extends: `ButtonProps`
+
+**DrawerTrigger Props**
+
+- Extends: `React.ComponentProps<typeof AriaDialogTrigger>`
+
+## Example
+
+Here's a basic example of how to use the Drawer component:
+
+```tsx
+import {
+  Button,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@vela-ui/react"
+
+export function Basic() {
+  return (
+    <DrawerTrigger>
+      <Button variant="outline">Open Drawer</Button>
+      <Drawer>
+        <DrawerContent>
+          <DrawerHeader>
+            <DrawerTitle>Drawer Title</DrawerTitle>
+          </DrawerHeader>
+          <div className="p-6">
+            <p>This is the drawer content.</p>
+          </div>
+        </DrawerContent>
+      </Drawer>
+    </DrawerTrigger>
+  )
+}
+```
+
+### Different Placements
+
+Drawers can be placed on different sides:
+
+```tsx
+import {
+  Button,
+  Drawer,
+  DrawerContent,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@vela-ui/react"
+
+export function Placements() {
+  return (
+    <div className="flex gap-4">
+      <DrawerTrigger>
+        <Button variant="outline">Top Drawer</Button>
+        <Drawer placement="top">
+          <DrawerContent>
+            <DrawerHeader>
+              <DrawerTitle>Top Drawer</DrawerTitle>
+            </DrawerHeader>
+            <div className="p-6">Content slides in from the top.</div>
+          </DrawerContent>
+        </Drawer>
+      </DrawerTrigger>
+
+      <DrawerTrigger>
+        <Button variant="outline">Left Drawer</Button>
+        <Drawer placement="left">
+          <DrawerContent>
+            <DrawerHeader>
+              <DrawerTitle>Left Drawer</DrawerTitle>
+            </DrawerHeader>
+            <div className="p-6">Content slides in from the left.</div>
+          </DrawerContent>
+        </Drawer>
+      </DrawerTrigger>
+    </div>
+  )
+}
+```
+
+# Dropdown
+
+A dropdown is a list of options that can be selected from a dropdown menu.
+
+A listbox displays a list of options and allows a user to select one or more of them.
+
+[ListBox docs](https://react-spectrum.adobe.com/react-aria/ListBox.html)
+
+## Props
+
+**DropdownItem Props**
+
+- Extends: `ListBoxItemProps<T>` and `VariantProps<typeof dropdownItemVariants>`
+- **`variant`**
+  - Type: "default" | "destructive"
+  - Default: "default"
+  - Description: The visual variant of the dropdown item.
+
+**DropdownSection Props**
+
+- Extends: `SectionProps<T>`
+- **`title`**
+  - Type: string
+  - Description: The title for the section.
+
+## Example
+
+Here's a basic example of how to use the Dropdown components:
+
+```tsx
+import { DropdownItem, DropdownLabel, DropdownDescription, DropdownSection } from "@vela-ui/react"
+
+export function Basic() {
+  return (
+    <div className="w-64 rounded-md border p-1">
+      <DropdownItem>
+        <DropdownLabel>Profile</DropdownLabel>
+        <DropdownDescription>View and edit your profile</DropdownDescription>
+      </DropdownItem>
+      <DropdownItem>
+        <DropdownLabel>Settings</DropdownLabel>
+        <DropdownDescription>Manage your preferences</DropdownDescription>
+      </DropdownItem>
+      <DropdownItem variant="destructive">
+        <DropdownLabel>Sign out</DropdownLabel>
+      </DropdownItem>
+    </div>
+  )
+}
+```
+
+### With Sections
+
+Dropdown items can be organized into sections:
+
+```tsx
+import { DropdownItem, DropdownLabel, DropdownSection } from "@vela-ui/react"
+
+export function WithSections() {
+  return (
+    <div className="w-64 rounded-md border p-1">
+      <DropdownSection title="Account">
+        <DropdownItem>
+          <DropdownLabel>Profile</DropdownLabel>
+        </DropdownItem>
+        <DropdownItem>
+          <DropdownLabel>Settings</DropdownLabel>
+        </DropdownItem>
+      </DropdownSection>
+      <DropdownSection title="Actions">
+        <DropdownItem variant="destructive">
+          <DropdownLabel>Sign out</DropdownLabel>
+        </DropdownItem>
+      </DropdownSection>
+    </div>
+  )
+}
+```
+
+## Accessibility
+
+These components include proper accessibility features:
+
+- Uses semantic HTML elements for proper screen reader support
+- Maintains proper color contrast ratios for text readability
+- Supports keyboard navigation and focus management
+- Provides clear visual hierarchy and state indication
+- Works well with form elements and validation
+- Supports ARIA attributes for screen readers
+- Handles focus management and escape key behavior
+- Provides proper role attributes for different component types
+
+# Input
+
+An input is a text field that allows a user to enter text.
+
+## Props
+
+**Input Props**
+
+- Extends: `React.ComponentProps<typeof AriaInput>`
+- **`size`**
+  - Type: "xs" | "sm" | "md" | "lg" | "xl"
+  - Default: "md"
+  - Description: The size of the input.
+
+**InputGroup Props**
+
+- Extends: `React.ComponentProps<typeof AriaGroup>`
+- **`size`**
+  - Type: "xs" | "sm" | "md" | "lg" | "xl"
+  - Description: The size of the input group.
+- **`startElement`**
+  - Type: React.ReactNode
+  - Description: Element to display at the start of the input.
+- **`endElement`**
+  - Type: React.ReactNode
+  - Description: Element to display at the end of the input.
+- **`startAddon`**
+  - Type: React.ReactNode
+  - Description: Addon to display at the start of the input.
+- **`endAddon`**
+  - Type: React.ReactNode
+  - Description: Addon to display at the end of the input.
+
+## Example
+
+Here's a basic example of how to use the Input component:
+
+```tsx
+import { Input } from "@vela-ui/react"
+
+export function Basic() {
+  return <Input placeholder="Enter text..." />
+}
+```
+
+### With Icons
+
+An Input can include icons:
+
+```tsx
+import { Input, InputGroup } from "@vela-ui/react"
+import { SearchIcon, UserIcon } from "lucide-react"
+
+export function WithIcons() {
+  return (
+    <div className="space-y-4">
+      <InputGroup startElement={<SearchIcon className="size-4" />}>
+        <Input placeholder="Search..." />
+      </InputGroup>
+      <InputGroup endElement={<UserIcon className="size-4" />}>
+        <Input placeholder="Username" />
+      </InputGroup>
+    </div>
+  )
+}
+```
+
+### Different Sizes
+
+The Input component supports different sizes:
+
+```tsx
+import { Input } from "@vela-ui/react"
+
+export function Sizes() {
+  return (
+    <div className="space-y-4">
+      <Input size="xs" placeholder="Extra small" />
+      <Input size="sm" placeholder="Small" />
+      <Input size="md" placeholder="Medium" />
+      <Input size="lg" placeholder="Large" />
+      <Input size="xl" placeholder="Extra large" />
+    </div>
+  )
+}
+```
+
+# Loader
+
+A loader is a component that displays a loading state.
+
+## Props
+
+**Loader Props**
+
+- Extends: `React.ComponentProps<"svg">`
+- **`size`**
+  - Type: "xs" | "sm" | "md" | "lg" | "xl"
+  - Default: "md"
+  - Description: The size of the loader.
+
+## Example
+
+Here's a basic example of how to use the Loader component:
+
+```tsx
+import { Loader } from "@vela-ui/react"
+
+export function Basic() {
+  return <Loader />
+}
+```
+
+### Different Variants
+
+The Loader component supports different animation variants:
+
+```tsx
+import { Loader } from "@vela-ui/react"
+
+export function Variants() {
+  return (
+    <div className="flex items-center gap-4">
+      <Loader />
+      <Loader variant="ring" />
+      <Loader variant="spin" />
+    </div>
+  )
+}
+```
+
+### Different Sizes
+
+The Loader component supports different sizes:
+
+```tsx
+import { Loader } from "@vela-ui/react"
+
+export function Sizes() {
+  return (
+    <div className="flex items-center gap-4">
+      <Loader size="xs" />
+      <Loader size="sm" />
+      <Loader size="md" />
+      <Loader size="lg" />
+      <Loader size="xl" />
+    </div>
+  )
+}
+```
+
+# Menu
+
+A menu displays a list of actions or options that a user can choose.
+
+[Menu docs](https://react-spectrum.adobe.com/react-aria/Menu.html)
+
+## Props
+
+**Menu Props**
+
+- Extends: `AriaMenuProps<T>`
+
+**MenuItem Props**
+
+- Extends: `AriaMenuItemProps<T>` and `VariantProps<typeof dropdownItemVariants>`
+- **`variant`**
+  - Type: "default" | "destructive"
+  - Default: "default"
+  - Description: The visual variant of the menu item.
+
+**MenuSection Props**
+
+- Extends: `AriaMenuSectionProps<T>`
+
+## Example
+
+Here's a basic example of how to use the Menu component:
+
+```tsx
+import { Button, Menu, MenuItem, MenuPopover, MenuTrigger } from "@vela-ui/react"
+
+export function Basic() {
+  return (
+    <MenuTrigger>
+      <Button variant="outline">Open Menu</Button>
+      <MenuPopover>
+        <Menu>
+          <MenuItem>Profile</MenuItem>
+          <MenuItem>Settings</MenuItem>
+          <MenuItem variant="destructive">Sign out</MenuItem>
+        </Menu>
+      </MenuPopover>
+    </MenuTrigger>
+  )
+}
+```
+
+### With Sections
+
+A Menu can include sections to group related items:
+
+```tsx
+import { Button, Menu, MenuItem, MenuPopover, MenuSection, MenuTrigger } from "@vela-ui/react"
+
+export function WithSections() {
+  return (
+    <MenuTrigger>
+      <Button variant="outline">Open Menu</Button>
+      <MenuPopover>
+        <Menu>
+          <MenuSection title="Account">
+            <MenuItem>Profile</MenuItem>
+            <MenuItem>Settings</MenuItem>
+          </MenuSection>
+          <MenuSection title="Actions">
+            <MenuItem variant="destructive">Sign out</MenuItem>
+          </MenuSection>
+        </Menu>
+      </MenuPopover>
+    </MenuTrigger>
+  )
+}
+```
+
+# NumberField
+
+A number field allows a user to enter a number, and increment or decrement the value using stepper buttons.
+
+[NumberField docs](https://react-spectrum.adobe.com/react-aria/NumberField.html)
+
+## Props
+
+**NumberField Props**
+
+- Extends: `FieldProps`, `React.ComponentProps<typeof AriaNumberField>`, and `VariantProps<typeof numberFieldVariants>`
+- **`label`**
+  - Type: string
+  - Description: The label for the number field.
+- **`description`**
+  - Type: string
+  - Description: A description for the number field.
+- **`errorMessage`**
+  - Type: string | ((validation: ValidationResult) => string)
+  - Description: Error message to display when validation fails.
+- **`size`**
+  - Type: "xs" | "sm" | "md" | "lg" | "xl"
+  - Default: "md"
+  - Description: The size of the number field.
+
+## Example
+
+Here's a basic example of how to use the NumberField component:
+
+```tsx
+import { NumberField } from "@vela-ui/react"
+
+export function Basic() {
+  return (
+    <NumberField
+      label="Quantity"
+      description="Enter the quantity"
+      defaultValue={1}
+      minValue={0}
+      maxValue={100}
+    />
+  )
+}
+```
+
+### With Validation
+
+A NumberField can include validation:
+
+```tsx
+import { NumberField } from "@vela-ui/react"
+
+export function WithValidation() {
+  return (
+    <NumberField
+      label="Age"
+      isRequired
+      errorMessage="Please enter a valid age"
+      minValue={0}
+      maxValue={120}
+    />
+  )
+}
+```
+
+# Popover
+
+A popover is an overlay element positioned relative to a trigger.
+
+[Popover docs](https://react-spectrum.adobe.com/react-aria/Popover.html)
+
+## Props
+
+**Popover Props**
+
+- Extends: `React.ComponentProps<typeof AriaPopover>` and `VariantProps<typeof popoverVariants>`
+- **`showArrow`**
+  - Type: boolean
+  - Default: false
+  - Description: Whether the element should render an arrow.
+
+## Example
+
+Here's a basic example of how to use the Popover component:
+
+```tsx
+import { Button, Popover, PopoverTrigger } from "@vela-ui/react"
+
+export function Basic() {
+  return (
+    <PopoverTrigger>
+      <Button variant="outline">Open Popover</Button>
+      <Popover>
+        <div className="p-4">
+          <h3 className="font-semibold">Popover Title</h3>
+          <p>This is the popover content.</p>
+        </div>
+      </Popover>
+    </PopoverTrigger>
+  )
+}
+```
+
+### With Arrow
+
+A Popover can include an arrow:
+
+```tsx
+import { Button, Popover, PopoverTrigger } from "@vela-ui/react"
+
+export function WithArrow() {
+  return (
+    <PopoverTrigger>
+      <Button variant="outline">Open Popover</Button>
+      <Popover showArrow>
+        <div className="p-4">
+          <h3 className="font-semibold">Popover with Arrow</h3>
+          <p>This popover has an arrow pointing to the trigger.</p>
+        </div>
+      </Popover>
+    </PopoverTrigger>
+  )
+}
+```
+
+# Radio & RadioGroup
+
+A radio group allows a user to select a single item from a list of mutually exclusive options.
+
+[RadioGroup docs](https://react-spectrum.adobe.com/react-aria/RadioGroup.html)
+
+## Props
+
+**RadioGroup Props**
+
+- Extends: `RadioGroupRootProps`
+- **`label`**
+  - Type: string
+  - Description: The label for the radio group.
+- **`description`**
+  - Type: string
+  - Description: A description for the radio group.
+- **`errorMessage`**
+  - Type: string | ((validation: ValidationResult) => string)
+  - Description: Error message to display when validation fails.
+
+**Radio Props**
+
+- Extends: `React.ComponentProps<typeof AriaRadio>` and `VariantProps<typeof radioVariants>`
+- **`size`**
+  - Type: "sm" | "md" | "lg"
+  - Default: "md"
+  - Description: The size of the radio button.
+
+## Example
+
+Here's a basic example of how to use the RadioGroup component:
+
+```tsx
+import { Radio, RadioGroup } from "@vela-ui/react"
+
+export function Basic() {
+  return (
+    <RadioGroup label="Favorite Color">
+      <Radio value="red">Red</Radio>
+      <Radio value="blue">Blue</Radio>
+      <Radio value="green">Green</Radio>
+    </RadioGroup>
+  )
+}
+```
+
+### With Validation
+
+A RadioGroup can include validation:
+
+```tsx
+import { Radio, RadioGroup } from "@vela-ui/react"
+
+export function WithValidation() {
+  return (
+    <RadioGroup label="Required Selection" isRequired errorMessage="Please select an option">
+      <Radio value="option1">Option 1</Radio>
+      <Radio value="option2">Option 2</Radio>
+      <Radio value="option3">Option 3</Radio>
+    </RadioGroup>
+  )
+}
+```
+
+# Select
+
+A select is a dropdown menu that allows a user to select a single item from a list of options.
+
+## Props
+
+**Select Props**
+
+- Extends: `AriaSelectProps<T>`
+- **`label`**
+  - Type: string
+  - Description: The label for the select.
+- **`description`**
+  - Type: string
+  - Description: A description for the select.
+- **`errorMessage`**
+  - Type: string | ((validation: ValidationResult) => string)
+  - Description: Error message to display when validation fails.
+- **`size`**
+  - Type: "xs" | "sm" | "md" | "lg"
+  - Default: "md"
+  - Description: The size of the select.
+
+## Example
+
+Here's a basic example of how to use the Select component:
+
+```tsx
+import { Select, SelectItem, SelectPopover, SelectTrigger, SelectValue } from "@vela-ui/react"
+
+export function Basic() {
+  return (
+    <Select label="Favorite Fruit">
+      <SelectTrigger>
+        <SelectValue placeholder="Select a fruit" />
+      </SelectTrigger>
+      <SelectPopover>
+        <SelectItem>Apple</SelectItem>
+        <SelectItem>Banana</SelectItem>
+        <SelectItem>Orange</SelectItem>
+        <SelectItem>Grapes</SelectItem>
+      </SelectPopover>
+    </Select>
+  )
+}
+```
+
+### With Sections
+
+A Select can include sections to group related items:
+
+```tsx
+import {
+  Select,
+  SelectItem,
+  SelectPopover,
+  SelectSection,
+  SelectTrigger,
+  SelectValue,
+} from "@vela-ui/react"
+
+export function WithSections() {
+  return (
+    <Select label="Food Category">
+      <SelectTrigger>
+        <SelectValue placeholder="Select a category" />
+      </SelectTrigger>
+      <SelectPopover>
+        <SelectSection title="Fruits">
+          <SelectItem>Apple</SelectItem>
+          <SelectItem>Banana</SelectItem>
+          <SelectItem>Orange</SelectItem>
+        </SelectSection>
+        <SelectSection title="Vegetables">
+          <SelectItem>Cabbage</SelectItem>
+          <SelectItem>Broccoli</SelectItem>
+          <SelectItem>Carrots</SelectItem>
+        </SelectSection>
+      </SelectPopover>
+    </Select>
+  )
+}
+```
+
+# Slider
+
+A slider allows a user to select one or more values within a range.
+
+[Slider docs](https://react-spectrum.adobe.com/react-aria/Slider.html)
+
+## Props
+
+**Slider Props**
+
+- Extends: `React.ComponentProps<typeof AriaSlider>` and `VariantProps<typeof sliderVariants>`
+- **`orientation`**
+  - Type: "horizontal" | "vertical"
+  - Default: "horizontal"
+  - Description: The orientation of the slider.
+- **`size`**
+  - Type: "sm" | "md" | "lg"
+  - Default: "md"
+  - Description: The size of the slider.
+
+## Example
+
+Here's a basic example of how to use the Slider component:
+
+```tsx
+import { Slider, SliderOutput, SliderThumb, SliderTrack } from "@vela-ui/react"
+
+export function Basic() {
+  return (
+    <Slider defaultValue={[50]} className="w-full">
+      <SliderTrack>
+        <SliderThumb />
+      </SliderTrack>
+      <SliderOutput />
+    </Slider>
+  )
+}
+```
+
+### Range Slider
+
+A Slider can select a range of values:
+
+```tsx
+import { Slider, SliderOutput, SliderThumb, SliderTrack } from "@vela-ui/react"
+
+export function RangeSlider() {
+  return (
+    <Slider defaultValue={[20, 80]} className="w-full">
+      <SliderTrack>
+        <SliderThumb />
+        <SliderThumb />
+      </SliderTrack>
+      <SliderOutput />
+    </Slider>
+  )
+}
+```
+
+### Vertical Slider
+
+A Slider can be oriented vertically:
+
+```tsx
+import { Slider, SliderOutput, SliderThumb, SliderTrack } from "@vela-ui/react"
+
+export function VerticalSlider() {
+  return (
+    <Slider orientation="vertical" defaultValue={[50]} className="h-64">
+      <SliderTrack>
+        <SliderThumb />
+      </SliderTrack>
+      <SliderOutput />
+    </Slider>
+  )
+}
+```
+
+# Switch
+
+A switch allows a user to turn a setting on or off.
+
+[Switch docs](https://react-spectrum.adobe.com/react-aria/Switch.html)
+
+## Props
+
+**Switch Props**
+
+- Extends: `React.ComponentProps<typeof AriaSwitch>` and `VariantProps<typeof switchVariants>`
+- **`size`**
+  - Type: "sm" | "md" | "lg" | "xl"
+  - Default: "md"
+  - Description: The size of the switch.
+
+## Example
+
+Here's a basic example of how to use the Switch component:
+
+````tsx
+import { Switch } from "@vela-ui/react"
+
+export function Basic() {
+  return <Switch>Enable notifications</Switch>
+}
+
+### Different Sizes
+
+The Switch component supports different sizes:
+
+```tsx
+import { Switch } from "@vela-ui/react"
+
+export function Sizes() {
+  return (
+    <div className="space-y-4">
+      <Switch size="sm">Small</Switch>
+      <Switch size="md">Medium</Switch>
+      <Switch size="lg">Large</Switch>
+      <Switch size="xl">Extra Large</Switch>
+    </div>
+  )
+}
+````
+
+### Disabled Switch
+
+A Switch can be disabled:
+
+```tsx
+import { Switch } from "@vela-ui/react"
+
+export function Disabled() {
+  return (
+    <div className="space-y-4">
+      <Switch isDisabled>Disabled</Switch>
+      <Switch isDisabled defaultSelected>
+        Disabled (selected)
+      </Switch>
+    </div>
+  )
+}
+```
+
+# Tabs
+
+Tabs organize content into multiple sections and allow users to navigate between them.
+
+[Tabs docs](https://react-spectrum.adobe.com/react-aria/Tabs.html)
+
+## Props
+
+**Tabs Props**
+
+- Extends: `React.ComponentProps<typeof AriaTabs>` and `VariantProps<typeof tabsVariants>`
+- **`variant`**
+  - Type: "default" | "underline" | "pills"
+  - Default: "default"
+  - Description: The visual variant of the tabs.
+- **`size`**
+  - Type: "sm" | "md" | "lg"
+  - Default: "md"
+  - Description: The size of the tabs.
+- **`orientation`**
+  - Type: "horizontal" | "vertical"
+  - Default: "horizontal"
+  - Description: The orientation of the tabs.
+
+## Example
+
+Here's a basic example of how to use the Tabs component:
+
+```tsx
+import { Tab, TabList, TabPanel, Tabs } from "@vela-ui/react"
+
+export function Basic() {
+  return (
+    <Tabs>
+      <TabList>
+        <Tab id="tab1">Tab 1</Tab>
+        <Tab id="tab2">Tab 2</Tab>
+        <Tab id="tab3">Tab 3</Tab>
+      </TabList>
+      <TabPanel id="tab1">Content for Tab 1</TabPanel>
+      <TabPanel id="tab2">Content for Tab 2</TabPanel>
+      <TabPanel id="tab3">Content for Tab 3</TabPanel>
+    </Tabs>
+  )
+}
+```
+
+### Different Variants
+
+Tabs support different visual variants:
+
+```tsx
+import { Tab, TabList, TabPanel, Tabs } from "@vela-ui/react"
+
+export function Variants() {
+  return (
+    <div className="space-y-8">
+      <div>
+        <h3 className="mb-4">Default</h3>
+        <Tabs variant="default">
+          <TabList>
+            <Tab id="tab1">Tab 1</Tab>
+            <Tab id="tab2">Tab 2</Tab>
+          </TabList>
+          <TabPanel id="tab1">Default variant content</TabPanel>
+          <TabPanel id="tab2">Default variant content</TabPanel>
+        </Tabs>
+      </div>
+
+      <div>
+        <h3 className="mb-4">Underline</h3>
+        <Tabs variant="underline">
+          <TabList>
+            <Tab id="tab1">Tab 1</Tab>
+            <Tab id="tab2">Tab 2</Tab>
+          </TabList>
+          <TabPanel id="tab1">Underline variant content</TabPanel>
+          <TabPanel id="tab2">Underline variant content</TabPanel>
+        </Tabs>
+      </div>
+
+      <div>
+        <h3 className="mb-4">Pills</h3>
+        <Tabs variant="pills">
+          <TabList>
+            <Tab id="tab1">Tab 1</Tab>
+            <Tab id="tab2">Tab 2</Tab>
+          </TabList>
+          <TabPanel id="tab1">Pills variant content</TabPanel>
+          <TabPanel id="tab2">Pills variant content</TabPanel>
+        </Tabs>
+      </div>
+    </div>
+  )
+}
+```
+
+# TextField
+
+A text field allows a user to enter a plain text value with a keyboard.
+
+[TextField docs](https://react-spectrum.adobe.com/react-aria/TextField.html)
+
+## Props
+
+**TextField Props**
+
+- Extends: `FieldProps`, `React.ComponentProps<typeof AriaTextField>`, `VariantProps<typeof textFieldVariants>`, and `Pick<InputGroupProps, "size" | "startElement" | "endElement" | "startAddon" | "endAddon">`
+- **`label`**
+  - Type: string
+  - Description: The label for the text field.
+- **`description`**
+  - Type: string
+  - Description: A description for the text field.
+- **`errorMessage`**
+  - Type: string | ((validation: ValidationResult) => string)
+  - Description: Error message to display when validation fails.
+- **`size`**
+  - Type: "xs" | "sm" | "md" | "lg" | "xl"
+  - Description: The size of the text field.
+- **`startElement`**
+  - Type: React.ReactNode
+  - Description: Element to display at the start of the input.
+- **`endElement`**
+  - Type: React.ReactNode
+  - Description: Element to display at the end of the input.
+
+## Example
+
+Here's a basic example of how to use the TextField component:
+
+```tsx
+import { TextField } from "@vela-ui/react"
+
+export function Basic() {
+  return (
+    <TextField
+      label="Email"
+      placeholder="Enter your email"
+      description="We'll never share your email"
+    />
+  )
+}
+```
+
+### With Icons
+
+A TextField can include icons:
+
+```tsx
+import { TextField } from "@vela-ui/react"
+import { MailIcon, LockIcon } from "lucide-react"
+
+export function WithIcons() {
+  return (
+    <div className="space-y-4">
+      <TextField
+        label="Email"
+        placeholder="Enter your email"
+        startElement={<MailIcon className="size-4" />}
+      />
+      <TextField
+        label="Password"
+        type="password"
+        placeholder="Enter your password"
+        startElement={<LockIcon className="size-4" />}
+      />
+    </div>
+  )
+}
+```
+
+# Textarea
+
+A textarea allows a user to enter a longer text value with a keyboard.
+
+## Props
+
+**Textarea Props**
+
+- Extends: `Omit<React.ComponentProps<typeof AriaTextArea>, "color">` and `VariantProps<typeof textAreaVariants>`
+- **`size`**
+  - Type: "xs" | "sm" | "md" | "lg" | "xl"
+  - Default: "md"
+  - Description: The size of the textarea.
+
+## Example
+
+Here's a basic example of how to use the Textarea component:
+
+```tsx
+import { Textarea } from "@vela-ui/react"
+
+export function Basic() {
+  return <Textarea placeholder="Enter your message..." rows={4} />
+}
+```
+
+### Different Sizes
+
+The Textarea component supports different sizes:
+
+```tsx
+import { Textarea } from "@vela-ui/react"
+
+export function Sizes() {
+  return (
+    <div className="space-y-4">
+      <Textarea size="xs" placeholder="Extra small" />
+      <Textarea size="sm" placeholder="Small" />
+      <Textarea size="md" placeholder="Medium" />
+      <Textarea size="lg" placeholder="Large" />
+      <Textarea size="xl" placeholder="Extra large" />
+    </div>
+  )
+}
+```
+
+### With Label
+
+A Textarea can include a label:
+
+```tsx
+import { Label, Textarea } from "@vela-ui/react"
+
+export function WithLabel() {
+  return (
+    <div className="space-y-2">
+      <Label htmlFor="message">Message</Label>
+      <Textarea id="message" placeholder="Enter your message..." rows={4} />
+    </div>
+  )
+}
+```
+
+# Tooltip
+
+A tooltip displays a description of an element on hover or focus.
+
+[Tooltip docs](https://react-spectrum.adobe.com/react-aria/Tooltip.html)
+
+## Props
+
+**Tooltip Props**
+
+- Extends: `React.ComponentProps<typeof AriaTooltip>` and `VariantProps<typeof tooltipVariants>`
+- **`showArrow`**
+  - Type: boolean
+  - Default: false
+  - Description: Whether the element should render an arrow.
+
+## Example
+
+Here's a basic example of how to use the Tooltip component:
+
+```tsx
+import { Button, Tooltip, TooltipTrigger } from "@vela-ui/react"
+
+export function Basic() {
+  return (
+    <TooltipTrigger>
+      <Button variant="outline">Hover me</Button>
+      <Tooltip>This is a tooltip</Tooltip>
+    </TooltipTrigger>
+  )
+}
+```
+
+### With Arrow
+
+A Tooltip can include an arrow:
+
+```tsx
+import { Button, Tooltip, TooltipTrigger } from "@vela-ui/react"
+
+export function WithArrow() {
+  return (
+    <TooltipTrigger>
+      <Button variant="outline">Hover me</Button>
+      <Tooltip showArrow>This tooltip has an arrow</Tooltip>
+    </TooltipTrigger>
+  )
+}
+```
+
+### Different Placements
+
+A Tooltip can be positioned in different places:
+
+```tsx
+import { Button, Tooltip, TooltipTrigger } from "@vela-ui/react"
+
+export function Placements() {
+  return (
+    <div className="flex gap-4">
+      <TooltipTrigger>
+        <Button variant="outline">Top</Button>
+        <Tooltip placement="top">Tooltip on top</Tooltip>
+      </TooltipTrigger>
+
+      <TooltipTrigger>
+        <Button variant="outline">Bottom</Button>
+        <Tooltip placement="bottom">Tooltip on bottom</Tooltip>
+      </TooltipTrigger>
+
+      <TooltipTrigger>
+        <Button variant="outline">Left</Button>
+        <Tooltip placement="left">Tooltip on left</Tooltip>
+      </TooltipTrigger>
+
+      <TooltipTrigger>
+        <Button variant="outline">Right</Button>
+        <Tooltip placement="right">Tooltip on right</Tooltip>
+      </TooltipTrigger>
+    </div>
+  )
+}
+```
