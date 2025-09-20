@@ -2806,23 +2806,11 @@ export function WithSections() {
 
 # Slider
 
-A slider allows a user to select one or more values within a range.
-
 [Slider docs](https://react-spectrum.adobe.com/react-aria/Slider.html)
 
-## Props
+## Anatomy
 
-**Slider Props**
-
-- Extends: `React.ComponentProps<typeof AriaSlider>` and `VariantProps<typeof sliderVariants>`
-- **`orientation`**
-  - Type: "horizontal" | "vertical"
-  - Default: "horizontal"
-  - Description: The orientation of the slider.
-- **`size`**
-  - Type: "sm" | "md" | "lg"
-  - Default: "md"
-  - Description: The size of the slider.
+A slider allows a user to select one or more values within a range.
 
 ## Example
 
@@ -2833,7 +2821,7 @@ import { Slider, SliderOutput, SliderThumb, SliderTrack } from "@vela-ui/react"
 
 export function Basic() {
   return (
-    <Slider defaultValue={[50]} className="w-full">
+    <Slider defaultValue={[50]}>
       <SliderTrack>
         <SliderThumb />
       </SliderTrack>
@@ -2843,44 +2831,110 @@ export function Basic() {
 }
 ```
 
-### Range Slider
+## API Reference
 
-A Slider can select a range of values:
+### Slider
 
-```tsx
-import { Slider, SliderOutput, SliderThumb, SliderTrack } from "@vela-ui/react"
+#### Props
 
-export function RangeSlider() {
-  return (
-    <Slider defaultValue={[20, 80]} className="w-full">
-      <SliderTrack>
-        <SliderThumb />
-        <SliderThumb />
-      </SliderTrack>
-      <SliderOutput />
-    </Slider>
-  )
-}
-```
+- **`size`**
+  - Type: "sm" | "md" | "lg"
+  - Default: "md"
+  - Description: The size of the slider.
 
-### Vertical Slider
+- **`orientation`**
+  - Type: "horizontal" | "vertical"
+  - Default: "horizontal"
+  - Description: The orientation of the slider.
 
-A Slider can be oriented vertically:
+- **`isDisabled`**
+  - Type: boolean
+  - Default: false
+  - Description: Whether the whole Slider is disabled.
 
-```tsx
-import { Slider, SliderOutput, SliderThumb, SliderTrack } from "@vela-ui/react"
+- **`minValue`**
+  - Type: number
+  - Default: 0
+  - Description: The slider's minimum value.
 
-export function VerticalSlider() {
-  return (
-    <Slider orientation="vertical" defaultValue={[50]} className="h-64">
-      <SliderTrack>
-        <SliderThumb />
-      </SliderTrack>
-      <SliderOutput />
-    </Slider>
-  )
-}
-```
+- **`maxValue`**
+  - Type: number
+  - Default: 100
+  - Description: The slider's maximum value.
+
+- **`step`**
+  - Type: number
+  - Default: 1
+  - Description: The slider's step value.
+
+- **`defaultValue`**
+  - Type: T
+  - Description: The default value (uncontrolled).
+
+- **`value`**
+  - Type: T
+  - Description: The current value (controlled).
+
+- **`onChange`**
+  - Type: (value: T) => void
+  - Description: Handler that is called when the value changes.
+
+- **`onChangeEnd`**
+  - Type: (value: T) => void
+  - Description: Fired when the slider stops moving, due to being let go.
+
+### SliderOutput
+
+A <SliderOutput> renders the current value of the slider as text.
+
+### SliderTrack
+
+The `SliderTrack` component is a grouping of one or more `SliderThumb` elements.
+
+#### Props
+
+- **`onHoverStart`**
+  - Type: (e: HoverEvent) => void
+  - Description: Handler that is called when a hover interaction starts.
+
+- **`onHoverEnd`**
+  - Type: (e: HoverEvent) => void
+  - Description: Handler that is called when a hover interaction ends.
+
+- **`onHoverChange`**
+  - (isHovering: boolean) => void
+  - Handler that is called when the hover state changes.
+
+### SliderThumb
+
+The `SliderThumb` component renders an individual thumb within a `SliderTrack`.
+
+#### Props
+
+- **`inputRef`**
+  - Type: React.RefObject`HTMLInputElement` | null
+  - Description: A ref for the HTML input element.
+
+- **`isDisabled`**
+  - Type: boolean
+  - Description: Whether the Thumb is disabled.
+
+- **`index`**
+  - Type: number
+  - Default: 0
+  - Description: Index of the thumb within the slider.
+
+- **`autoFocus`**
+  - Type: boolean
+  - Description: Whether the element should receive focus on render.
+
+- **`name`**
+  - Type: string
+  - Description: The name of the input element, used when submitting an HTML form
+
+- **`form`**
+  - Type: string
+  - Description: The <form> element to associate the input with. The value of this attribute must be the id of a <form> in the same document.
 
 # Switch
 
