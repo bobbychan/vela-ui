@@ -170,29 +170,9 @@ React Aria Components do not include any styles by default, allowing you to buil
 
 # Alert
 
+## Anatomy
+
 An alert displays a message that draws the user's attention without interrupting their current activity.
-
-## Props
-
-**Alert Props**
-
-- Extends: `React.ComponentProps<"div">`
-- Description: The main container for the alert component.
-
-**AlertContent Props**
-
-- Extends: `React.ComponentProps<"div">`
-- Description: Container for alert content including title and description.
-
-**AlertTitle Props**
-
-- Extends: `React.ComponentProps<"div">`
-- Description: The title of the alert message.
-
-**AlertDescription Props**
-
-- Extends: `React.ComponentProps<"div">`
-- Description: The description text of the alert message.
 
 ## Example
 
@@ -233,148 +213,31 @@ export function WithDescription() {
 }
 ```
 
-### With Action Button
+## API Reference
 
-An Alert can include action buttons:
+### Alert
 
-```tsx
-import { Alert, AlertContent, AlertDescription, AlertTitle, Button } from "@vela-ui/react"
-import { CircleCheckIcon } from "lucide-react"
+The `Alert` component is a wrapper for the alert component.
 
-export function WithButton() {
-  return (
-    <Alert>
-      <CircleCheckIcon />
-      <AlertContent>
-        <AlertTitle>New message!</AlertTitle>
-        <AlertDescription>You have 1 unread message</AlertDescription>
-      </AlertContent>
-      <Button className="self-center" size="sm">
-        See
-      </Button>
-    </Alert>
-  )
-}
-```
+### AlertContent
 
-### Custom Styles
+The `AlertContent` component is a container for the alert content.
 
-You can customize the appearance of an Alert using custom CSS classes:
+### AlertTitle
 
-```tsx
-import { Alert, AlertContent, AlertDescription, AlertTitle } from "@vela-ui/react"
-import { CircleCheckIcon } from "lucide-react"
+The `AlertTitle` component is the title of the alert message.
 
-export function CustomStyles() {
-  return (
-    <Alert className="border-amber-900 bg-amber-50 text-amber-900 dark:border-amber-950 dark:bg-amber-950 dark:text-amber-100">
-      <CircleCheckIcon />
-      <AlertContent>
-        <AlertTitle>Plot Twist: This Alert is Actually Amber!</AlertTitle>
-        <AlertDescription>This one has custom colors for light and dark mode.</AlertDescription>
-      </AlertContent>
-    </Alert>
-  )
-}
-```
+### AlertDescription
 
-### Different Alert Types
-
-You can create different types of alerts by using different icons and custom styling:
-
-```tsx
-import { Alert, AlertContent, AlertDescription, AlertTitle } from "@vela-ui/react"
-import { CircleAlertIcon, CircleCheckIcon, CircleXIcon, InfoIcon } from "lucide-react"
-
-export function AlertTypes() {
-  return (
-    <div className="space-y-4">
-      {/* Success Alert */}
-      <Alert className="border-green-900 bg-green-50 text-green-900 dark:border-green-950 dark:bg-green-950 dark:text-green-100">
-        <CircleCheckIcon />
-        <AlertContent>
-          <AlertTitle>Success</AlertTitle>
-          <AlertDescription>Your operation completed successfully.</AlertDescription>
-        </AlertContent>
-      </Alert>
-
-      {/* Error Alert */}
-      <Alert className="border-red-900 bg-red-50 text-red-900 dark:border-red-950 dark:bg-red-950 dark:text-red-100">
-        <CircleXIcon />
-        <AlertContent>
-          <AlertTitle>Error</AlertTitle>
-          <AlertDescription>Something went wrong. Please try again.</AlertDescription>
-        </AlertContent>
-      </Alert>
-
-      {/* Warning Alert */}
-      <Alert className="border-yellow-900 bg-yellow-50 text-yellow-900 dark:border-yellow-950 dark:bg-yellow-950 dark:text-yellow-100">
-        <CircleAlertIcon />
-        <AlertContent>
-          <AlertTitle>Warning</AlertTitle>
-          <AlertDescription>Please review your input before proceeding.</AlertDescription>
-        </AlertContent>
-      </Alert>
-
-      {/* Info Alert */}
-      <Alert className="border-blue-900 bg-blue-50 text-blue-900 dark:border-blue-950 dark:bg-blue-950 dark:text-blue-100">
-        <InfoIcon />
-        <AlertContent>
-          <AlertTitle>Information</AlertTitle>
-          <AlertDescription>Here's some helpful information for you.</AlertDescription>
-        </AlertContent>
-      </Alert>
-    </div>
-  )
-}
-```
+The `AlertDescription` component is the description of the alert message.
 
 ## Accessibility
 
-The Alert component includes proper accessibility features:
-
-- Uses `role="alert"` to announce the message to screen readers
-- Provides semantic structure with separate title and description elements
-- Supports keyboard navigation and focus management
-- Maintains proper color contrast ratios for text readability
-
 # Avatar
 
+## Anatomy
+
 An image element with a fallback for representing the user.
-
-## Props
-
-**Avatar Props**
-
-- Extends: `React.ComponentProps<"span">`
-- **`size`**
-  - Type: "sm" | "md" | "lg"
-  - Default: "md"
-  - Description: The size of the avatar.
-- **`shape`**
-  - Type: "circle" | "square"
-  - Default: "circle"
-  - Description: The shape of the avatar.
-
-**AvatarImage Props**
-
-- Extends: `React.ComponentProps<"img">`
-- **`src`**
-  - Type: string
-  - Description: The source URL of the image.
-- **`alt`**
-  - Type: string
-  - Description: Alternative text for the image.
-- **`onLoadingStatusChange`**
-  - Type: (status: ImageLoadingStatus) => void
-  - Description: Callback fired when the image loading status changes.
-
-**AvatarFallback Props**
-
-- Extends: `React.ComponentProps<"span">`
-- **`delayMs`**
-  - Type: number
-  - Description: Delay in milliseconds before showing the fallback.
 
 ## Example
 
@@ -389,103 +252,6 @@ export function Basic() {
       <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
       <AvatarFallback>CN</AvatarFallback>
     </Avatar>
-  )
-}
-```
-
-### Sizes
-
-The Avatar component supports different sizes:
-
-```tsx
-import { Avatar, AvatarFallback, AvatarImage } from "@vela-ui/react"
-
-export function Sizes() {
-  return (
-    <div className="flex items-center gap-4">
-      <Avatar size="sm">
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
-      <Avatar size="md">
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
-      <Avatar size="lg">
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
-    </div>
-  )
-}
-```
-
-### Shapes
-
-The Avatar component supports different shapes:
-
-```tsx
-import { Avatar, AvatarFallback, AvatarImage } from "@vela-ui/react"
-
-export function Shapes() {
-  return (
-    <div className="flex items-center gap-4">
-      <Avatar shape="circle">
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
-      <Avatar shape="square">
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
-    </div>
-  )
-}
-```
-
-### Fallback Only
-
-You can use Avatar with only a fallback (no image):
-
-```tsx
-import { Avatar, AvatarFallback } from "@vela-ui/react"
-
-export function FallbackOnly() {
-  return (
-    <Avatar>
-      <AvatarFallback>JD</AvatarFallback>
-    </Avatar>
-  )
-}
-```
-
-### Image Loading States
-
-The Avatar component automatically handles image loading states:
-
-```tsx
-import { Avatar, AvatarFallback, AvatarImage } from "@vela-ui/react"
-
-export function LoadingStates() {
-  return (
-    <div className="flex items-center gap-4">
-      {/* Image loads successfully */}
-      <Avatar>
-        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-        <AvatarFallback>CN</AvatarFallback>
-      </Avatar>
-
-      {/* Image fails to load */}
-      <Avatar>
-        <AvatarImage src="https://broken-link.png" alt="Broken" />
-        <AvatarFallback>BL</AvatarFallback>
-      </Avatar>
-
-      {/* No image provided */}
-      <Avatar>
-        <AvatarFallback>NF</AvatarFallback>
-      </Avatar>
-    </div>
   )
 }
 ```
@@ -517,59 +283,45 @@ export function Group() {
 }
 ```
 
-### Custom Fallback Content
+## API Reference
 
-You can customize the fallback content with icons or other elements:
+### Avatar
 
-```tsx
-import { Avatar, AvatarFallback, AvatarImage } from "@vela-ui/react"
-import { UserIcon } from "lucide-react"
+#### Props
 
-export function CustomFallback() {
-  return (
-    <div className="flex items-center gap-4">
-      <Avatar>
-        <AvatarImage src="https://broken-link.png" alt="User" />
-        <AvatarFallback>
-          <UserIcon className="size-4" />
-        </AvatarFallback>
-      </Avatar>
-      <Avatar>
-        <AvatarImage src="https://broken-link.png" alt="User" />
-        <AvatarFallback className="bg-gradient-to-br from-blue-500 to-purple-600 text-white">
-          AB
-        </AvatarFallback>
-      </Avatar>
-    </div>
-  )
-}
-```
+- **`size`**
+  - Type: "sm" | "md" | "lg"
+  - Default: "md"
+  - Description: The size of the avatar.
 
-### Delayed Fallback
+- **`shape`**
+  - Type: "circle" | "square"
+  - Default: "circle"
+  - Description: The shape of the avatar.
 
-You can delay the appearance of the fallback to prevent flickering:
+### AvatarFallback
 
-```tsx
-import { Avatar, AvatarFallback, AvatarImage } from "@vela-ui/react"
+#### Props
 
-export function DelayedFallback() {
-  return (
-    <Avatar>
-      <AvatarImage src="https://slow-loading-image.png" alt="Slow loading" />
-      <AvatarFallback delayMs={300}>SL</AvatarFallback>
-    </Avatar>
-  )
-}
-```
+- **`delayMs`**
+  - Type: number
+  - Description: Delay in milliseconds before showing the fallback.
 
-## Accessibility
+### AvatarImage
 
-The Avatar component includes proper accessibility features:
+#### Props
 
-- Provides alternative text through the `alt` attribute on images
-- Uses semantic HTML elements for proper screen reader support
-- Maintains proper focus management and keyboard navigation
-- Supports custom fallback content for better user experience
+- **`src`**
+  - Type: string
+  - Description: The source URL of the image.
+
+- **`alt`**
+  - Type: string
+  - Description: Alternative text for the image.
+
+- **`onLoadingStatusChange`**
+  - Type: (status: ImageLoadingStatus) => void
+  - Description: Callback fired when the image loading status changes.
 
 # Badge
 
