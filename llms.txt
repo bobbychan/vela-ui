@@ -289,53 +289,46 @@ export function Group() {
 
 #### Props
 
-- **`size`**
-  - Type: "sm" | "md" | "lg"
-  - Default: "md"
-  - Description: The size of the avatar.
+**`size`**
+Type: "sm" | "md" | "lg"
+Default: "md"
+Description: The size of the avatar.
 
-- **`shape`**
-  - Type: "circle" | "square"
-  - Default: "circle"
-  - Description: The shape of the avatar.
+**`shape`**
+Type: "circle" | "square"
+Default: "circle"
+Description: The shape of the avatar.
 
 ### AvatarFallback
 
 #### Props
 
-- **`delayMs`**
-  - Type: number
-  - Description: Delay in milliseconds before showing the fallback.
+**`delayMs`**
+Type: number
+Default: `undefined`
+Description: Delay in milliseconds before showing the fallback.
 
 ### AvatarImage
 
 #### Props
 
-- **`src`**
-  - Type: string
-  - Description: The source URL of the image.
+**`src`**
+Type: string
+Description: The source URL of the image.
 
-- **`alt`**
-  - Type: string
-  - Description: Alternative text for the image.
+**`alt`**
+Type: string
+Description: Alternative text for the image.
 
-- **`onLoadingStatusChange`**
-  - Type: (status: ImageLoadingStatus) => void
-  - Description: Callback fired when the image loading status changes.
+**`onLoadingStatusChange`**
+Type: (status: ImageLoadingStatus) => void
+Description: Callback fired when the image loading status changes.
 
 # Badge
 
+## Anatomy
+
 A badge is a small component that can be used to display a count or a status.
-
-## Props
-
-**Badge Props**
-
-- Extends: `React.ComponentProps<"span">`
-- **`variant`**
-  - Type: "neutral" | "primary" | "secondary" | "accent" | "destructive" | "outline"
-  - Default: "primary"
-  - Description: The visual style variant of the badge.
 
 ## Example
 
@@ -346,27 +339,6 @@ import { Badge } from "@vela-ui/react"
 
 export function Basic() {
   return <Badge>Default</Badge>
-}
-```
-
-### Variants
-
-The Badge component supports different visual variants:
-
-```tsx
-import { Badge } from "@vela-ui/react"
-
-export function Variants() {
-  return (
-    <div className="flex items-center gap-2">
-      <Badge variant="primary">Primary</Badge>
-      <Badge variant="secondary">Secondary</Badge>
-      <Badge variant="accent">Accent</Badge>
-      <Badge variant="neutral">Neutral</Badge>
-      <Badge variant="destructive">Destructive</Badge>
-      <Badge variant="outline">Outline</Badge>
-    </div>
-  )
 }
 ```
 
@@ -429,74 +401,42 @@ export function WithButton() {
 }
 ```
 
-### Custom Styles
+## API Reference
 
-You can customize the appearance of badges using custom CSS classes:
+### Badge
 
-```tsx
-import { Badge } from "@vela-ui/react"
-import { HeartIcon } from "lucide-react"
+#### Props
 
-export function CustomStyles() {
-  return (
-    <div className="flex items-center gap-2">
-      <Badge className="h-8 px-4 text-base [&>svg]:size-4">
-        <HeartIcon />
-        Large
-      </Badge>
-      <Badge className="bg-gradient-to-r from-blue-500 to-purple-600 text-white">Gradient</Badge>
-      <Badge className="border-amber-200 bg-amber-100 text-amber-800">Custom</Badge>
-    </div>
-  )
-}
-```
-
-### Count Badges
-
-Use badges to display counts or numbers:
-
-```tsx
-import { Badge } from "@vela-ui/react"
-
-export function CountBadges() {
-  return (
-    <div className="flex items-center gap-2">
-      <Badge>1</Badge>
-      <Badge variant="secondary">5</Badge>
-      <Badge variant="destructive">99+</Badge>
-      <Badge variant="outline">New</Badge>
-    </div>
-  )
-}
-```
+**`variant`**
+Type: "neutral" | "primary" | "secondary" | "accent" | "destructive" | "outline"
+Default: "primary"
+Description: The visual style variant of the badge.
 
 # Button
 
-A button allows a user to perform an action, with mouse, touch, and keyboard interactions.
-
 [Button docs](https://react-spectrum.adobe.com/react-aria/Button.html)
 
-## Props
+## Anatomy
 
-**`isDisabled`**
-Type: boolean
-Default: false
-Description: Whether the button is disabled.
+A button allows a user to perform an action, with mouse, touch, and keyboard interactions.
 
-**`isPending`**
-Type: boolean
-Default: false
-Description: Whether the button is in a pending state.
+## Example
 
-**`autoFocus`**
-Type: boolean
-Default: false
-Description: Whether the element should receive focus on render.
+Here's a basic example of how to use the Button component:
 
-**`type`**
-Type: "button" | "submit" | "reset"
-Default: "button"
-Description: The behavior of the button when used in an HTML form.
+```tsx
+import { Button } from "@vela-ui/react"
+
+export function Basic() {
+  return <Button onPress={() => alert("Hello world!")}>Press me</Button>
+}
+```
+
+## API Reference
+
+### Button
+
+#### Props
 
 **`variant`**
 Type: "neutral" | "primary" | "secondary" | "destructive" | "outline" | "ghost" | "link"
@@ -518,108 +458,84 @@ Type: React.ReactNode
 Default: <Loader />
 Description: The loader to display when the button is in a pending state.
 
-## Example
+**`isPending`**
+Type: boolean
+Description: Whether the button is in a pending state.
 
-Here's a basic example of how to use the Button component:
+**`isDisabled`**
+Type: boolean
+Description: Whether the button is disabled.
 
-```tsx
-import { Button } from "@vela-ui/react"
+**`autoFocus`**
+Type: boolean
+Description: Whether the element should receive focus on render.
 
-export function Basic() {
-  return <Button onPress={() => alert("Hello world!")}>Press me</Button>
-}
-```
+**`type`**
+Type: "button" | "submit" | "reset"
+Default: "button"
+Description: The behavior of the button when used in an HTML form.
 
-### Disabled
+**`form`**
+Type: string
+Description: The `<form>` element to associate the button with. The value of this attribute must be the id of a `<form>` in the same document.
 
-A Button can be disabled using the isDisabled prop.
+#### Events
 
-```tsx
-import { Button } from "@vela-ui/react"
+**`onPress`**
+Type: (e: PressEvent) => void
+Description: Handler that is called when the press is released over the target.
 
-export function Disabled() {
-  return <Button isDisabled>Disabled</Button>
-}
-```
+**`onPressStart`**
+Type: (e: PressEvent) => void
+Description: Handler that is called when a press interaction starts.
 
-### Pending
+**`onPressEnd`**
+Type: (e: PressEvent) => void
+Description: Handler that is called when a press interaction ends, either over the target or when the pointer leaves the target.
 
-A Button can be put into a pending state using the isPending prop. This is useful when an action takes a long time to complete, and you want to provide feedback to the user that the action is in progress.
+**`onPressChange`**
+Type: (isPressed: boolean) => void
+Description: Handler that is called when the press state changes.
 
-```tsx
-import { Button } from "@vela-ui/react"
+**`onPressUp`**
+Type: (e: PressEvent) => void
+Description: Handler that is called when a press is released over the target, regardless of whether it started on the target or not.
 
-export function Pending() {
-  return <Button isPending>Pending</Button>
-}
-```
+#### Accessibility
 
-### Loader
+**`id`**
+Type: string
+Description: The element's unique identifier.
 
-A Button can display a loader when in a pending state.
+**`aria-disabled`**
+Type: boolean
+Description: Indicates whether the element is disabled to users of assistive technology.
 
-```tsx
-import { Button, Loader } from "@vela-ui/react"
+**`aria-expanded`**
+Type: boolean
+Description: Indicates whether the element, or another grouping element it controls, is currently expanded or collapsed.
 
-export function Loader() {
-  return (
-    <Button isPending loader={<Loader />}>
-      Pending
-    </Button>
-  )
-  return (
-    <Button isPending loader={<Loader variant="ring" />}>
-      Pending
-    </Button>
-  )
-  return (
-    <Button isPending loader={<Loader variant="spin" />}>
-      Pending
-    </Button>
-  )
-}
-```
+**`aria-label`**
+Type: string
+Description: Defines a string value that labels the current element.
+
+**`aria-labelledby`**
+Type: string
+Description: Identifies the element (or elements) that labels the current element.
+
+**`aria-describedby`**
+Type: string
+Description: Identifies the element (or elements) that describes the object.
+
+**`aria-details`**
+Type: boolean
+Description: Identifies the element (or elements) that provide a detailed, extended description for the object.
 
 # Card
 
+## Anatomy
+
 Displays a card with header, content, and footer.
-
-## Props
-
-**Card Props**
-
-- Extends: `React.ComponentProps<"div">`
-- Description: The main container for the card component.
-
-**CardHeader Props**
-
-- Extends: `React.ComponentProps<"div">`
-- Description: Container for the card header including title, description, and action.
-
-**CardTitle Props**
-
-- Extends: `React.ComponentProps<"div">`
-- Description: The title of the card.
-
-**CardDescription Props**
-
-- Extends: `React.ComponentProps<"div">`
-- Description: The description text of the card.
-
-**CardAction Props**
-
-- Extends: `React.ComponentProps<"div">`
-- Description: Container for action buttons in the card header.
-
-**CardContent Props**
-
-- Extends: `React.ComponentProps<"div">`
-- Description: The main content area of the card.
-
-**CardFooter Props**
-
-- Extends: `React.ComponentProps<"div">`
-- Description: Container for footer content and actions.
 
 ## Example
 
@@ -643,278 +559,43 @@ export function Basic() {
 }
 ```
 
-### With Action
+## API Reference
 
-A Card can include action buttons in the header:
+### Card
 
-```tsx
-import {
-  Button,
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@vela-ui/react"
+The main container for the card component.
 
-export function WithAction() {
-  return (
-    <Card className="w-full max-w-sm">
-      <CardHeader>
-        <CardTitle>Login to your account</CardTitle>
-        <CardDescription>Enter your email below to login to your account</CardDescription>
-        <CardAction>
-          <Button variant="link">Sign Up</Button>
-        </CardAction>
-      </CardHeader>
-      <CardContent>
-        <p>Login form content would go here.</p>
-      </CardContent>
-    </Card>
-  )
-}
-```
+### CardHeader
 
-### With Footer
+Container for the card header including title, description, and action.
 
-A Card can include a footer with additional actions:
+### CardTitle
 
-```tsx
-import {
-  Button,
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@vela-ui/react"
+The title of the card.
 
-export function WithFooter() {
-  return (
-    <Card className="w-full max-w-sm">
-      <CardHeader>
-        <CardTitle>Product Name</CardTitle>
-        <CardDescription>Product description goes here.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <p>Product details and information.</p>
-      </CardContent>
-      <CardFooter className="flex-col gap-2">
-        <Button className="w-full">Add to Cart</Button>
-        <Button variant="outline" className="w-full">
-          Learn More
-        </Button>
-      </CardFooter>
-    </Card>
-  )
-}
-```
+### CardDescription
 
-### Complete Form Card
+The description of the card.
 
-A complete example with a login form:
+### CardAction
 
-```tsx
-import {
-  Button,
-  Card,
-  CardAction,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-  Input,
-  Label,
-} from "@vela-ui/react"
+Container for action buttons in the card header.
 
-export function LoginCard() {
-  return (
-    <Card className="w-full max-w-sm">
-      <CardHeader>
-        <CardTitle>Login to your account</CardTitle>
-        <CardDescription>Enter your email below to login to your account</CardDescription>
-        <CardAction>
-          <Button variant="link">Sign Up</Button>
-        </CardAction>
-      </CardHeader>
-      <CardContent>
-        <form>
-          <div className="flex flex-col gap-6">
-            <div className="grid gap-2">
-              <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="m@example.com" required />
-            </div>
-            <div className="grid gap-2">
-              <div className="flex items-center">
-                <Label htmlFor="password">Password</Label>
-                <a
-                  href="#"
-                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-                >
-                  Forgot your password?
-                </a>
-              </div>
-              <Input id="password" type="password" required />
-            </div>
-          </div>
-        </form>
-      </CardContent>
-      <CardFooter className="flex-col gap-2">
-        <Button type="submit" className="w-full">
-          Login
-        </Button>
-        <Button variant="outline" className="w-full">
-          Login with Google
-        </Button>
-      </CardFooter>
-    </Card>
-  )
-}
-```
+### CardContent
 
-### Product Card
+The main content area of the card.
 
-An example of a product card:
+### CardFooter
 
-```tsx
-import {
-  Badge,
-  Button,
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@vela-ui/react"
-import { HeartIcon, StarIcon } from "lucide-react"
-
-export function ProductCard() {
-  return (
-    <Card className="w-full max-w-sm">
-      <CardHeader>
-        <div className="flex items-center justify-between">
-          <Badge variant="secondary">New</Badge>
-          <Button variant="ghost" size="sm" shape="square">
-            <HeartIcon className="size-4" />
-          </Button>
-        </div>
-        <CardTitle>Product Name</CardTitle>
-        <CardDescription>High-quality product description</CardDescription>
-        <div className="flex items-center gap-1">
-          {[...Array(5)].map((_, i) => (
-            <StarIcon key={i} className="size-4 fill-yellow-400 text-yellow-400" />
-          ))}
-          <span className="text-muted-foreground ml-2 text-sm">(4.8)</span>
-        </div>
-      </CardHeader>
-      <CardContent>
-        <div className="bg-muted mb-4 aspect-square rounded-lg"></div>
-        <p className="text-muted-foreground text-sm">Product features and benefits go here.</p>
-      </CardContent>
-      <CardFooter className="flex-col gap-2">
-        <div className="flex w-full items-center justify-between">
-          <span className="text-2xl font-bold">$99.99</span>
-          <span className="text-muted-foreground text-sm line-through">$129.99</span>
-        </div>
-        <Button className="w-full">Add to Cart</Button>
-      </CardFooter>
-    </Card>
-  )
-}
-```
-
-### Custom Styling
-
-You can customize the appearance of cards using custom CSS classes:
-
-```tsx
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@vela-ui/react"
-
-export function CustomStyling() {
-  return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      <Card className="border-blue-200 bg-gradient-to-br from-blue-50 to-indigo-100">
-        <CardHeader>
-          <CardTitle className="text-blue-900">Blue Theme</CardTitle>
-          <CardDescription className="text-blue-700">A card with blue theming</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p className="text-blue-800">Content with blue theme styling.</p>
-        </CardContent>
-      </Card>
-
-      <Card className="border-green-200 bg-gradient-to-br from-green-50 to-emerald-100">
-        <CardHeader>
-          <CardTitle className="text-green-900">Green Theme</CardTitle>
-          <CardDescription className="text-green-700">A card with green theming</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p className="text-green-800">Content with green theme styling.</p>
-        </CardContent>
-      </Card>
-
-      <Card className="border-purple-200 bg-gradient-to-br from-purple-50 to-violet-100">
-        <CardHeader>
-          <CardTitle className="text-purple-900">Purple Theme</CardTitle>
-          <CardDescription className="text-purple-700">A card with purple theming</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <p className="text-purple-800">Content with purple theme styling.</p>
-        </CardContent>
-      </Card>
-    </div>
-  )
-}
-```
-
-## Accessibility
-
-The Card component includes proper accessibility features:
-
-- Uses semantic HTML elements for proper screen reader support
-- Maintains proper color contrast ratios for text readability
-- Supports keyboard navigation and focus management
-- Provides clear visual hierarchy and content structure
-- Works well with form elements and interactive components
+Container for footer content and actions.
 
 # Link
 
-A link allows a user to navigate to another page or resource within a web page or application.
-
 [Link docs](https://react-spectrum.adobe.com/react-aria/Link.html)
 
-## Props
+## Anatomy
 
-**`variant`**
-Type: "hover" | "underline" | "none"
-Default: "hover"
-Description: The visual style variant of the link.
-
-**`isDisabled`**
-Type: boolean
-Default: false
-Description: Whether the link is disabled.
-
-**`href`**
-Type: string
-Description: The URL that the link points to.
-
-**`target`**
-Type: "\_blank" | "\_self" | "\_parent" | "\_top"
-Description: Where to display the linked URL.
-
-**`rel`**
-Type: string
-Description: The relationship between the linked resource and the current page.
-
-**`download`**
-Type: boolean | string
-Default: false
-Description: Whether the link should be downloaded when clicked.
+A link allows a user to navigate to another page or resource within a web page or application.
 
 ## Example
 
@@ -932,71 +613,113 @@ export function Basic() {
 }
 ```
 
-### Variants
+## API Reference
 
-The Link component supports different visual variants:
+### Link
 
-```tsx
-import { Link } from "@vela-ui/react"
+#### Props
 
-export function Variants() {
-  return (
-    <div className="flex items-center gap-4">
-      <Link href="#" variant="hover">
-        Hover underline
-      </Link>
-      <Link href="#" variant="underline">
-        Always underlined
-      </Link>
-      <Link href="#" variant="none">
-        No underline
-      </Link>
-    </div>
-  )
-}
-```
+**`variant`**
+Type: "hover" | "underline" | "none"
+Default: "hover"
+Description: The visual style variant of the link.
 
-### Disabled
+**`isDisabled`**
+Type: boolean
+Default: false
+Description: Whether the link is disabled.
 
-A Link can be disabled using the isDisabled prop:
+**`autoFocus`**
+Type: boolean
+Description: Whether the element should receive focus on render.
 
-```tsx
-import { Link } from "@vela-ui/react"
+**`href`**
+Type: string
+Description: The URL that the link points to.
 
-export function Disabled() {
-  return (
-    <Link href="#" isDisabled>
-      Disabled Link
-    </Link>
-  )
-}
-```
+**`hrefLang`**
+Type: string
+Description: Hints at the human language of the linked URL
 
-### External Link
+**`target`**
+Type: "\_blank" | "\_self" | "\_parent" | "\_top"
+Description: Where to display the linked URL.
 
-For external links, you can use the target and rel props:
+**`rel`**
+Type: string
+Description: The relationship between the linked resource and the current page.
 
-```tsx
-import { Link } from "@vela-ui/react"
+**`download`**
+Type: boolean | string
+Description: Whether the link should be downloaded when clicked.
 
-export function External() {
-  return (
-    <Link
-      href="https://react-spectrum.adobe.com/react-aria/Link.html"
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      React Aria Link Documentation
-    </Link>
-  )
-}
-```
+**`routerOptions`**
+Type: RouterOptions
+Description: Options for the configured client side router.
+
+#### Events
+
+**`onPress`**
+Type: (e: PressEvent) => void
+Description: Handler that is called when the press is released over the target.
+
+**`onPressStart`**
+Type: (e: PressEvent) => void
+Description: Handler that is called when a press interaction starts.
+
+**`onPressEnd`**
+Type: (e: PressEvent) => void
+Description: Handler that is called when a press interaction ends, either over the target or when the pointer leaves the target.
+
+**`onPressChange`**
+Type: (isPressed: boolean) => void
+Description: Handler that is called when the press state changes.
+
+**`onPressUp`**
+Type: (e: PressEvent) => void
+Description: Handler that is called when a press is released over the target, regardless of whether it started on the target or not.
+
+#### Accessibility
+
+**`aria-label`**
+Type: string
+Description: Defines a string value that labels the current element.
+
+**`aria-labelledby`**
+Type: string
+Description: Identifies the element (or elements) that labels the current element.
+
+**`aria-describedby`**
+Type: string
+Description: Identifies the element (or elements) that describes the object.
+
+**`aria-details`**
+Type: boolean
+Description: Identifies the element (or elements) that provide a detailed, extended description for the object.
 
 # LinkButton
 
+## Anatomy
+
 A LinkButton combines the functionality of a Link with the visual appearance of a Button. It's useful when you want a button-like appearance that navigates to another page or resource.
 
-## Props
+## Example
+
+Here's a basic example of how to use the LinkButton component:
+
+```tsx
+import { LinkButton } from "@vela-ui/react"
+
+export function Basic() {
+  return <LinkButton href="/dashboard">Go to Dashboard</LinkButton>
+}
+```
+
+## API Reference
+
+### LinkButton
+
+#### Props
 
 **`variant`**
 Type: "neutral" | "primary" | "secondary" | "accent" | "destructive" | "outline" | "ghost" | "link"
@@ -1030,217 +753,15 @@ Description: Where to display the linked URL.
 Type: string
 Description: The relationship between the current document and the linked document.
 
-## Example
-
-Here's a basic example of how to use the LinkButton component:
-
-```tsx
-import { LinkButton } from "@vela-ui/react"
-
-export function Basic() {
-  return <LinkButton href="/dashboard">Go to Dashboard</LinkButton>
-}
-```
-
-### Variants
-
-The LinkButton component supports all the same variants as the Button component:
-
-```tsx
-import { LinkButton } from "@vela-ui/react"
-
-export function Variants() {
-  return (
-    <div className="flex flex-wrap items-center gap-3">
-      <LinkButton href="#" variant="primary">
-        Primary
-      </LinkButton>
-      <LinkButton href="#" variant="secondary">
-        Secondary
-      </LinkButton>
-      <LinkButton href="#" variant="outline">
-        Outline
-      </LinkButton>
-      <LinkButton href="#" variant="ghost">
-        Ghost
-      </LinkButton>
-      <LinkButton href="#" variant="destructive">
-        Destructive
-      </LinkButton>
-    </div>
-  )
-}
-```
-
-### Sizes
-
-The LinkButton component supports different sizes:
-
-```tsx
-import { LinkButton } from "@vela-ui/react"
-
-export function Sizes() {
-  return (
-    <div className="flex items-center gap-3">
-      <LinkButton href="#" size="xs">
-        Extra Small
-      </LinkButton>
-      <LinkButton href="#" size="sm">
-        Small
-      </LinkButton>
-      <LinkButton href="#" size="md">
-        Medium
-      </LinkButton>
-      <LinkButton href="#" size="lg">
-        Large
-      </LinkButton>
-      <LinkButton href="#" size="xl">
-        Extra Large
-      </LinkButton>
-    </div>
-  )
-}
-```
-
-### Shapes
-
-The LinkButton component supports different shapes:
-
-```tsx
-import { LinkButton } from "@vela-ui/react"
-
-export function Shapes() {
-  return (
-    <div className="flex items-center gap-3">
-      <LinkButton href="#" shape="rectangle">
-        Rectangle
-      </LinkButton>
-      <LinkButton href="#" shape="square">
-        Square
-      </LinkButton>
-      <LinkButton href="#" shape="circle">
-        Circle
-      </LinkButton>
-    </div>
-  )
-}
-```
-
-### Disabled
-
-A LinkButton can be disabled using the isDisabled prop:
-
-```tsx
-import { LinkButton } from "@vela-ui/react"
-
-export function Disabled() {
-  return (
-    <LinkButton href="#" isDisabled>
-      Disabled Link Button
-    </LinkButton>
-  )
-}
-```
-
-# Checkbox & CheckboxGroup
-
-A checkbox allows a user to select multiple items from a list of individual items, or to mark one individual item as selected.
-
-[Checkbox docs](https://react-spectrum.adobe.com/react-aria/Checkbox.html)
-
-A checkbox group allows a user to select multiple items from a list of options.
+# CheckboxGroup
 
 [CheckboxGroup docs](https://react-spectrum.adobe.com/react-aria/CheckboxGroup.html)
 
-## Props
+## Anatomy
 
-**Checkbox Props**
-
-- Extends: `React.ComponentProps<typeof AriaCheckbox>`
-- **`size`**
-  - Type: "sm" | "md" | "lg"
-  - Default: "md"
-  - Description: The size of the checkbox.
-- **`isDisabled`**
-  - Type: boolean
-  - Default: false
-  - Description: Whether the checkbox is disabled.
-- **`isIndeterminate`**
-  - Type: boolean
-  - Default: false
-  - Description: Whether the checkbox is in an indeterminate state.
-- **`indicatorClassName`**
-  - Type: string
-  - Description: Custom CSS classes for the checkbox indicator.
-
-**CheckboxGroup Props**
-
-- Extends: `React.ComponentProps<typeof AriaCheckboxGroup>`
-- **`label`**
-  - Type: string
-  - Description: The label for the checkbox group.
-- **`description`**
-  - Type: string
-  - Description: A description for the checkbox group.
-- **`errorMessage`**
-  - Type: string | ((validation: ValidationResult) => string)
-  - Description: Error message to display when validation fails.
-
-**CheckboxGroupRoot Props**
-
-- Extends: `React.ComponentProps<typeof AriaCheckboxGroup>`
-- Description: The root container for checkbox group without built-in label and description.
+A checkbox group allows a user to select multiple items from a list of options.
 
 ## Example
-
-Here's a basic example of how to use the Checkbox component:
-
-```tsx
-import { Checkbox } from "@vela-ui/react"
-
-export function Basic() {
-  return <Checkbox>Checkbox</Checkbox>
-}
-```
-
-### Checkbox States
-
-The Checkbox component supports different states:
-
-```tsx
-import { Checkbox } from "@vela-ui/react"
-
-export function States() {
-  return (
-    <div className="flex flex-col gap-2">
-      <Checkbox>Unchecked</Checkbox>
-      <Checkbox defaultSelected>Checked</Checkbox>
-      <Checkbox isIndeterminate>Indeterminate</Checkbox>
-      <Checkbox isDisabled>Disabled</Checkbox>
-    </div>
-  )
-}
-```
-
-### Checkbox Sizes
-
-The Checkbox component supports different sizes:
-
-```tsx
-import { Checkbox } from "@vela-ui/react"
-
-export function Sizes() {
-  return (
-    <div className="flex flex-col gap-2">
-      <Checkbox size="sm">Small</Checkbox>
-      <Checkbox size="md">Medium</Checkbox>
-      <Checkbox size="lg">Large</Checkbox>
-    </div>
-  )
-}
-```
-
-### CheckboxGroup
 
 Here's how to use CheckboxGroup with multiple checkboxes:
 
@@ -1286,183 +807,275 @@ export function WithValidation() {
 }
 ```
 
-### Disabled CheckboxGroup
+## API Reference
 
-A CheckboxGroup can be disabled:
+### CheckboxGroup
+
+#### Props
+
+**`label`**
+Type: string
+Description: The label for the checkbox group.
+
+**`description`**
+Type: string
+Description: A description for the checkbox group.
+
+**`errorMessage`**
+Type: string | ((validation: ValidationResult) => string)
+Description: Error message to display when validation fails.
+
+**`value`**
+Type: string[]
+Description: The current value (controlled).
+
+**`defaultValue`**
+Type: string[]
+Description: The default value (uncontrolled).
+
+**`name`**
+Type: string
+Description: The name of the input element, used when submitting an HTML form.
+
+**`isDisabled`**
+Type: boolean
+Description: Whether the input is disabled.
+
+**`isReadOnly`**
+Type: boolean
+Description: Whether the input can be selected but not changed by the user.
+
+**`isRequired`**
+Type: boolean
+Description: Whether user input is required on the input before form submission.
+
+**`isInvalid`**
+Type: boolean
+Description: Whether the input value is invalid.
+
+**`validate`**
+Type: (value: string[]) => ValidationError
+Description: A function that returns an error message if a given value is invalid
+
+**`form`**
+Type: string
+Description: The `<form>` element to associate the input with. The value of this attribute must be the id of a `<form>` in the same document
+
+**`validationBehavior`**
+Type: "native" | "aria"
+Default: "native"
+Description: Whether to use native HTML form validation to prevent form submission when the value is missing or invalid, or mark the field as required or invalid via ARIA.
+
+#### Events
+
+**`onChange`**
+Type: (value: T) => void
+Description: Handler that is called when the value changes.
+
+**`onFocus`**
+Type: (e: FocusEvent) => void
+Description: Handler that is called when the element receives focus.
+
+**`onFocusChange`**
+Type: (isFocused: boolean) => void
+Description: Handler that is called when the element's focus status changes.
+
+**`onBlur`**
+Type: (e: FocusEvent) => void
+Description: Handler that is called when the element loses focus.
+
+#### Accessibility
+
+**`id`**
+Type: string
+Description: The element's unique identifier'
+
+**`aria-label`**
+Type: string
+Description: Defines a string value that labels the current element.
+
+**`aria-labelledby`**
+Type: string
+Description: Identifies the element (or elements) that labels the current element.
+
+**`aria-describedby`**
+Type: string
+Description: Identifies the element (or elements) that describes the object.
+
+**`aria-details`**
+Type: boolean
+Description: Identifies the element (or elements) that provide a detailed, extended description for the object.
+
+**`aria-errormessage`**
+Type: string
+Description: Identifies the element that provides an error message for the object.
+
+# Checkbox
+
+[Checkbox docs](https://react-spectrum.adobe.com/react-aria/Checkbox.html)
+
+## Anatomy
+
+A checkbox allows a user to select multiple items from a list of individual items, or to mark one individual item as selected.
+
+## Example
+
+Here's a basic example of how to use the Checkbox component:
 
 ```tsx
-import { Checkbox, CheckboxGroup } from "@vela-ui/react"
+import { Checkbox } from "@vela-ui/react"
 
-export function DisabledGroup() {
-  return (
-    <CheckboxGroup label="Disabled Group" isDisabled>
-      <Checkbox value="option1">Option 1</Checkbox>
-      <Checkbox value="option2">Option 2</Checkbox>
-      <Checkbox value="option3">Option 3</Checkbox>
-    </CheckboxGroup>
-  )
+export function Basic() {
+  return <Checkbox>Checkbox</Checkbox>
 }
 ```
 
-### Custom Styling
+### Checkbox States
 
-You can customize the appearance of checkboxes:
-
-```tsx
-import { Checkbox, cn } from "@vela-ui/react"
-
-export function CustomStyling() {
-  return (
-    <Checkbox
-      className={({ isSelected }) =>
-        cn(
-          "hover:bg-accent/50 flex items-start gap-3 rounded-lg border p-3 text-sm leading-none font-medium select-none",
-          {
-            "border-blue-600 bg-blue-50 dark:border-blue-900 dark:bg-blue-950 [&_[data-slot=checkbox-indicator]]:border-blue-600 [&_[data-slot=checkbox-indicator]]:bg-blue-600 [&_[data-slot=checkbox-indicator]]:text-white":
-              isSelected,
-          },
-        )
-      }
-    >
-      <div className="grid gap-1.5 font-normal">
-        <p className="text-sm leading-none font-medium">Enable notifications</p>
-        <p className="text-muted-foreground text-sm">
-          You can enable or disable notifications at any time.
-        </p>
-      </div>
-    </Checkbox>
-  )
-}
-```
-
-### Custom Indicator Colors
-
-You can customize the indicator colors for different checkboxes:
+The Checkbox component supports different states:
 
 ```tsx
-import { Checkbox, CheckboxGroup } from "@vela-ui/react"
+import { Checkbox } from "@vela-ui/react"
 
-export function CustomColors() {
+export function States() {
   return (
-    <CheckboxGroup label="Favorite color" description="Choose your favorite color">
-      <div className="flex gap-4">
-        <Checkbox
-          value="blue"
-          size="lg"
-          indicatorClassName="group-data-[selected=true]:bg-blue-500 group-data-[selected=true]:border-none"
-        >
-          Blue
-        </Checkbox>
-        <Checkbox
-          value="green"
-          size="lg"
-          indicatorClassName="group-data-[selected=true]:bg-green-500 group-data-[selected=true]:border-none"
-        >
-          Green
-        </Checkbox>
-        <Checkbox
-          value="red"
-          size="lg"
-          indicatorClassName="group-data-[selected=true]:bg-red-500 group-data-[selected=true]:border-none"
-        >
-          Red
-        </Checkbox>
-      </div>
-    </CheckboxGroup>
-  )
-}
-```
-
-### CheckboxGroupRoot
-
-Use CheckboxGroupRoot when you need more control over the layout:
-
-```tsx
-import { Checkbox, CheckboxGroupRoot } from "@vela-ui/react"
-
-export function RootComponent() {
-  return (
-    <div className="flex flex-col gap-4">
-      <h3 className="text-sm font-medium">Favorite Sport</h3>
-      <CheckboxGroupRoot aria-label="Favorite sport">
-        <Checkbox value="soccer">Soccer</Checkbox>
-        <Checkbox value="baseball">Baseball</Checkbox>
-        <Checkbox value="basketball">Basketball</Checkbox>
-      </CheckboxGroupRoot>
+    <div className="flex flex-col gap-2">
+      <Checkbox>Unchecked</Checkbox>
+      <Checkbox defaultSelected>Checked</Checkbox>
+      <Checkbox isIndeterminate>Indeterminate</Checkbox>
+      <Checkbox isDisabled>Disabled</Checkbox>
     </div>
   )
 }
 ```
 
-### Form Integration
+## API Reference
 
-Checkboxes work well with forms:
+### Checkbox
 
-```tsx
-import { Button, Checkbox, CheckboxGroup, Form, Input, Label } from "@vela-ui/react"
+#### Props
 
-export function FormIntegration() {
-  return (
-    <Form className="flex flex-col gap-6">
-      <div className="grid gap-2">
-        <Label htmlFor="email">Email</Label>
-        <Input id="email" type="email" placeholder="m@example.com" required />
-      </div>
+**`size`**
+Type: "sm" | "md" | "lg"
+Default: "md"
+Description: The size of the checkbox.
 
-      <CheckboxGroup label="Preferences" description="Select your preferences">
-        <Checkbox value="newsletter">Subscribe to newsletter</Checkbox>
-        <Checkbox value="notifications">Enable notifications</Checkbox>
-        <Checkbox value="marketing">Receive marketing emails</Checkbox>
-      </CheckboxGroup>
+**`indicatorClassName`**
+Type: string
+Description: Custom CSS classes for the checkbox indicator.
 
-      <Button type="submit">Submit</Button>
-    </Form>
-  )
-}
-```
+**`inputRef`**
+Type: React.RefObject`<HTMLInputElement>`
+Description: A ref for the HTML input element.
 
-## Accessibility
+**`value`**
+Type: string
+Description: The value of the input element, used when submitting an HTML form.
 
-The Checkbox and CheckboxGroup components include proper accessibility features:
+**`defaultSelected`**
+Type: boolean
+Description: Whether the element should be selected (uncontrolled).
 
-- Uses semantic HTML elements for proper screen reader support
-- Maintains proper color contrast ratios for text readability
-- Supports keyboard navigation and focus management
-- Provides clear visual hierarchy and state indication
-- Works well with form elements and validation
-- Supports ARIA attributes for screen readers
-- Handles indeterminate state properly
+**`isIndeterminate`**
+Type: boolean
+Description: Indeterminism is presentational only. The indeterminate visual representation remains regardless of user interaction.
+
+**`isSelected`**
+Type: boolean
+Description: Whether the element should be selected (controlled).
+
+**`isDisabled`**
+Type: boolean
+Description: Whether the input is disabled.
+
+**`isReadOnly`**
+Type: boolean
+Description: Whether the input can be selected but not changed by the user.
+
+**`isRequired`**
+Type: boolean
+Description: Whether user input is required on the input before form submission.
+
+**`isInvalid`**
+Type: boolean
+Description: Whether the input value is invalid.
+
+**`validate`**
+Type: (value: boolean) => ValidationError
+Description: A function that returns an error message if a given value is invalid.
+
+**`autoFocus`**
+Type: boolean
+Description: Whether the element should receive focus on render.
+
+**`name`**
+Type: string
+Description: The name of the input element, used when submitting an HTML form.
+
+**`form`**
+Type: string
+Description: The `<form>` element to associate the input with. The value of this attribute must be the id of a `<form>` in the same document.
+
+**`validationBehavior`**
+Type: "native" | "aria"
+Default: "native"
+Description: Whether to use native HTML form validation to prevent form submission when the value is missing or invalid, or mark the field as required or invalid via ARIA.
+
+#### Events
+
+**`onChange`**
+Type: (isSelected: boolean) => void
+Description: Handler that is called when the element's selection state changes.
+
+**`onFocus`**
+Type: (e: FocusEvent) => void
+Description: Handler that is called when the element receives focus.
+
+**`onFocusChange`**
+Type: (isFocused: boolean) => void
+Description: Handler that is called when the element's focus status changes.
+
+**`onBlur`**
+Type: (e: FocusEvent) => void
+Description: Handler that is called when the element loses focus.
+
+#### Accessibility
+
+**`id`**
+Type: string
+Description: The element's unique identifier.
+
+**`aria-controls`**
+Type: string
+Description: Identifies the element (or elements) whose contents or presence are controlled by the current element.
+
+**`aria-label`**
+Type: string
+Description: Defines a string value that labels the current element.
+
+**`aria-labelledby`**
+Type: string
+Description: Identifies the element (or elements) that labels the current element.
+
+**`aria-describedby`**
+Type: string
+Description: Identifies the element (or elements) that describes the object.
+
+**`aria-details`**
+Type: boolean
+Description: Identifies the element (or elements) that provide a detailed, extended description for the object.
+
+**`aria-errormessage`**
+Type: string
+Description: Identifies the element that provides an error message for the object.
 
 # Combobox
 
-A combo box combines a text input with a listbox, allowing users to filter a list of options to items matching a query.
-
 [Combobox docs](https://react-spectrum.adobe.com/react-aria/Combobox.html)
 
-## Props
+## Anatomy
 
-**Combobox Props**
-
-- Extends: `AriaComboBoxProps<T>` and `FieldProps`
-- **`label`**
-  - Type: string
-  - Description: The label for the combobox.
-- **`description`**
-  - Type: string
-  - Description: A description for the combobox.
-- **`errorMessage`**
-  - Type: string | ((validation: ValidationResult) => string)
-  - Description: Error message to display when validation fails.
-
-**ComboboxInput Props**
-
-- Extends: `React.ComponentProps<typeof Input>`
-- **`endElement`**
-  - Type: React.ReactNode
-  - Description: Custom end element for the input.
-- **`endElementProps`**
-  - Type: React.ComponentProps<typeof Button>
-  - Description: Props for the end element button.
+A combo box combines a text input with a listbox, allowing users to filter a list of options to items matching a query.
 
 ## Example
 
@@ -1540,100 +1153,205 @@ export function WithSections() {
 }
 ```
 
-### With Descriptions
+## API Reference
 
-Items can include descriptions:
+### Combobox
 
-```tsx
-import {
-  Combobox,
-  ComboboxDescription,
-  ComboboxInput,
-  ComboboxItem,
-  ComboboxLabel,
-  ComboboxList,
-  ComboboxPopover,
-} from "@vela-ui/react"
+#### Props
 
-export function WithDescriptions() {
-  const items = [
-    { name: "Apple", description: "Sweet and crisp fruit" },
-    { name: "Banana", description: "Yellow tropical fruit" },
-    { name: "Orange", description: "Citrus fruit rich in vitamin C" },
-  ]
+**`label`**
+Type: string
+Description: The label for the combobox.
 
-  return (
-    <Combobox className="w-64" placeholder="Select a fruit" label="Fruit with Description">
-      <ComboboxInput />
-      <ComboboxPopover>
-        <ComboboxList>
-          {items.map((item) => (
-            <ComboboxItem key={item.name}>
-              <ComboboxLabel>{item.name}</ComboboxLabel>
-              <ComboboxDescription>{item.description}</ComboboxDescription>
-            </ComboboxItem>
-          ))}
-        </ComboboxList>
-      </ComboboxPopover>
-    </Combobox>
-  )
-}
-```
+**`description`**
+Type: string
+Description: A description for the combobox.
 
-# Modal & Dialog
+**`errorMessage`**
+Type: string | ((validation: ValidationResult) => string)
+Description: Error message to display when validation fails.
 
-A modal is an overlay element which blocks interaction with elements outside it.
+**`defaultFilter`**
+Type: (textValue: string, inputValue: string) => boolean
+Description: The filter function used to determine if a option should be included in the combo box list.
+
+**`formValue`**
+Type: 'text' | 'key'
+Default: 'key'
+Description: Whether the text or key of the selected item is submitted as part of an HTML form. When allowsCustomValue is true, this option does not apply and the text is always submitted.
+
+**`allowsEmptyCollection`**
+Type: boolean
+Description: Whether the combo box allows the menu to be open when the collection is empty.
+
+**`shouldFocusWrap`**
+Type: boolean
+Description: Whether keyboard navigation is circular.
+
+**`defaultItems`**
+Type: Iterable<T>
+Description: The list of ComboBox items (uncontrolled).
+
+**`items`**
+Type: Iterable<T>
+Description: The list of ComboBox items (controlled).
+
+**`inputValue`**
+Type: string
+Description: The value of the ComboBox input (controlled).
+
+**`defaultInputValue`**
+Type: string
+Description: The default value of the ComboBox input (uncontrolled).
+
+**`allowsCustomValue`**
+Type: boolean
+Description: Whether the ComboBox allows a non-item matching input value to be set.
+
+**`menuTrigger`**
+Type: 'focus' | 'input' | 'manual'
+Default: 'input'
+Description: The interaction required to display the ComboBox menu.
+
+**`disabledKeys`**
+Type: Iterable<Key>
+Description: The item keys that are disabled. These items cannot be selected, focused, or otherwise interacted with.
+
+**`selectedKey`**
+Type: Key
+Description: The initial selected key in the collection (uncontrolled).
+
+**`defaultSelectedKey`**
+Type: Key
+Description: The initial selected key in the collection (uncontrolled).
+
+**`isDisabled`**
+Type: boolean
+Description: Whether the input is disabled.
+
+**`isReadOnly`**
+Type: boolean
+Description: Whether the input can be selected but not changed by the user.
+
+**`isRequired`**
+Type: boolean
+Description: Whether user input is required on the input before form submission.
+
+**`isInvalid`**
+Type: boolean
+Description: Whether the input value is invalid.
+
+**`validate`**
+Type: (value: ComboBoxValidationValue) => ValidationError
+Description: A function that returns an error message if a given value is invalid.
+
+**`autoFocus`**
+Type: boolean
+Description: Whether the element should receive focus on render.
+
+**`name`**
+Type: string
+Description: The name of the input element, used when submitting an HTML form.
+
+**`form`**
+Type: string
+Description: The `<form>` element to associate the input with. The value of this attribute must be the id of a `<form>` in the same document.
+
+**`validationBehavior`**
+Type: "native" | "aria"
+Default: "native"
+Description: Whether to use native HTML form validation to prevent form submission when the value is missing or invalid, or mark the field as required or invalid via ARIA.
+
+#### Events
+
+**`onOpenChange`**
+Type: (isOpen: boolean, menuTrigger?: MenuTriggerAction) => void
+Description: Method that is called when the open state of the menu changes. Returns the new open state and the action that caused the opening of the menu.
+
+**`onSelectionChange`**
+Type: (key: Key | null) => void
+Description: Handler that is called when the selection changes..
+
+**`onInputChange`**
+Type: (value: string) => void
+Description: Handler that is called when the ComboBox input value changes.
+
+### ComboboxInput
+
+#### Props
+
+**`endElement`**
+Type: React.ReactNode
+Description: Custom end element for the input.
+
+**`endElementProps`**
+Type: React.ComponentProps<typeof Button>
+Description: Props for the end element button.
+
+### ComboboxItem
+
+#### Props
+
+**`value`**
+Type: string
+Description: The value of the item.
+
+### ComboboxList
+
+#### Props
+
+**`children`**
+Type: React.ReactNode
+Description: The children of the list.
+
+### ComboboxPopover
+
+#### Props
+
+**`children`**
+Type: React.ReactNode
+Description: The children of the popover.
+
+### ComboboxSection
+
+#### Props
+
+**`title`**
+Type: string
+Description: The title of the section.
+
+### ComboboxItem
+
+#### Props
+
+**`value`**
+Type: string
+Description: The value of the item.
+
+### ComboboxLabel
+
+#### Props
+
+**`children`**
+Type: React.ReactNode
+Description: The children of the label.
+
+### ComboboxDescription
+
+#### Props
+
+**`children`**
+Type: React.ReactNode
+Description: The children of the description.
+
+# Dialog
 
 [Modal docs](https://react-spectrum.adobe.com/react-aria/Modal.html)
-
-A dialog is an overlay shown above other content in an application.
-
 [Dialog docs](https://react-spectrum.adobe.com/react-aria/Dialog.html)
 
-## Props
+## Anatomy
 
-**Modal Props**
-
-- Extends: `React.ComponentProps<typeof AriaModal>`
-- **`size`**
-  - Type: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "full"
-  - Default: "lg"
-  - Description: The size of the modal.
-
-**ModalContent Props**
-
-- Extends: `ModalOverlayProps` and `VariantProps<typeof modalVariants>`
-- **`isDismissable`**
-  - Type: boolean
-  - Default: true
-  - Description: Whether the modal can be dismissed.
-- **`size`**
-  - Type: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "full"
-  - Description: The size of the modal.
-- **`placement`**
-  - Type: "top" | "center" | "bottom"
-  - Default: "center"
-  - Description: The placement of the modal.
-- **`scrollBehavior`**
-  - Type: "inside" | "outside"
-  - Default: "outside"
-  - Description: How the modal handles scrolling.
-- **`isBlurred`**
-  - Type: boolean
-  - Default: false
-  - Description: Whether to blur the background.
-
-**Dialog Props**
-
-- Extends: `ModalContentProps`
-- **`role`**
-  - Type: "dialog" | "alertdialog"
-  - Default: "dialog"
-  - Description: The role of the dialog.
-- **`showCloseButton`**
-  - Type: boolean
-  - Default: true
-  - Description: Whether to show the close button.
+A dialog is an overlay shown above other content in an application.
 
 ## Example
 
@@ -1687,30 +1405,6 @@ export function Basic() {
 }
 ```
 
-### Modal Sizes
-
-Modals support different sizes:
-
-```tsx
-import { Button, ModalContent, useDisclosure } from "@vela-ui/react"
-
-export function ModalSizes() {
-  const { isOpen, onOpen, onOpenChange } = useDisclosure()
-
-  return (
-    <>
-      <Button onPress={onOpen}>Open Modal</Button>
-      <ModalContent isOpen={isOpen} onOpenChange={onOpenChange} size="xl">
-        <div className="p-6">
-          <h2 className="mb-4 text-xl font-semibold">Large Modal</h2>
-          <p>This is a large modal with more content space.</p>
-        </div>
-      </ModalContent>
-    </>
-  )
-}
-```
-
 ### Alert Dialog
 
 Use Dialog with alertdialog role for important confirmations:
@@ -1751,7 +1445,185 @@ export function AlertDialog() {
 }
 ```
 
-# Disclosure & DisclosureGroup
+## API Reference
+
+### Dialog
+
+#### Props
+
+**`showCloseButton`**
+Type: boolean
+Default: true
+Description: Whether to show the close button.
+
+**`size`**
+Type: "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl" | "4xl" | "5xl" | "full"
+Description: The size of the modal.
+
+**`placement`**
+Type: "top" | "center" | "bottom"
+Default: "center"
+Description: The placement of the modal.
+
+**`scrollBehavior`**
+Type: "inside" | "outside"
+Default: "outside"
+Description: How the modal handles scrolling.
+
+**`isBlurred`**
+Type: boolean
+Default: false
+Description: Whether to blur the background.
+
+**`isDismissable`**
+Type: boolean
+Default: true
+Description: Whether to close the modal when the user interacts outside it.
+
+**`isEntering`**
+Type: boolean
+Description: Whether the modal is currently performing an entry animation.
+
+**`isExiting`**
+Type: boolean
+Description: Whether the modal is currently performing an exit animation.
+
+**`isKeyboardDismissDisabled`**
+Type: boolean
+Default: false
+Description: Whether pressing the escape key to close the modal should be disabled.
+
+**`shouldCloseOnInteractOutside`**
+Type: (element: Element) => boolean
+Description: When user interacts with the argument element outside of the overlay ref, return true if onClose should be called.
+
+**`isOpen`**
+Type: boolean
+Description: Whether the overlay is open by default (controlled).
+
+**`defaultOpen`**
+Type: boolean
+Description: Whether the overlay is open by default (uncontrolled).
+
+#### Events
+
+**`onOpenChange`**
+Type: (isOpen: boolean) => void
+Description: Handler that is called when the overlay's open state changes.
+
+### DialogContent
+
+#### Props
+
+**`children`**
+Type: React.ReactNode
+Description: Children of the dialog. A function may be provided to access a function to close the dialog.
+
+#### Accessibility
+
+**`role`**
+Type: "dialog" | "alertdialog"
+Default: "dialog"
+Description: The accessibility role for the dialog.
+
+**`id`**
+Type: string
+Description: The element's unique identifier.
+
+**`aria-label`**
+Type: string
+Description: Defines a string value that labels the current element.
+
+**`aria-labelledby`**
+Type: string
+Description: Identifies the element (or elements) that labels the current element.
+
+**`aria-describedby`**
+Type: string
+Description: Identifies the element (or elements) that describes the object.
+
+**`aria-details`**
+Type: string
+Description: Identifies the element (or elements) that provide a detailed, extended description for the object.
+
+### DialogTrigger
+
+#### Props
+
+**`children`**
+Type: React.ReactNode
+Description: The children of the dialog trigger.
+
+**`isOpen`**
+Type: boolean
+Description: Whether the overlay is open by default (controlled).
+
+**`defaultOpen`**
+Type: boolean
+Description: Whether the overlay is open by default (uncontrolled).
+
+#### Events
+
+**`onOpenChange`**
+Type: (isOpen: boolean) => void
+Description: Handler that is called when the overlay's open state changes.
+
+### DialogHeader
+
+#### Props
+
+**`children`**
+Type: React.ReactNode
+Description: The children of the dialog header.
+
+### DialogTitle
+
+#### Props
+
+**`children`**
+Type: React.ReactNode
+Description: The children of the dialog title.
+
+### DialogDescription
+
+#### Props
+
+**`children`**
+Type: React.ReactNode
+Description: The children of the dialog description.
+
+### DialogFooter
+
+#### Props
+
+**`children`**
+Type: React.ReactNode
+Description: The children of the dialog footer.
+
+### DialogCloseIcon
+
+#### Props
+
+**`shape`**
+Type: "circle" | "square"
+Default: "circle"
+Description: The shape of the close icon.
+
+**`variant`**
+Type: "default" | "destructive" | "ghost" | "link" | "outline" | "primary" | "secondary" | "accent"
+Default: "ghost"
+Description: The variant of the close icon.
+
+**`size`**
+Type: "xs" | "sm" | "md" | "lg" | "xl"
+Default: "xs"
+Description: The size of the close icon.
+
+### DialogClose
+
+# DisclosureGroup
+
+# Disclosure
 
 A disclosure is a collapsible section of content. It is composed of a header with a heading and trigger button, and a panel that contains the content.
 
@@ -1835,57 +1707,9 @@ export function Accordion() {
 
 # Drawer
 
-A drawer is a panel that slides in from the side of the screen.
+## Anatomy
 
-## Props
-
-**Drawer Props**
-
-- Extends: `React.ComponentProps<typeof AriaModalOverlay>` and `VariantProps<typeof drawerVariants>`
-- **`placement`**
-  - Type: "top" | "bottom" | "left" | "right"
-  - Default: "right"
-  - Description: The placement of the drawer.
-- **`isBlurred`**
-  - Type: boolean
-  - Default: false
-  - Description: Whether to blur the background.
-- **`showCloseButton`**
-  - Type: boolean
-  - Default: true
-  - Description: Whether to show the close button.
-
-**DrawerContent Props**
-
-- Extends: `React.ComponentProps<typeof AriaDialog>`
-
-**DrawerBody Props**
-
-- Extends: `React.ComponentProps<"div">`
-
-**DrawerHeader Props**
-
-- Extends: `React.ComponentProps<"div">`
-
-**DrawerTitle Props**
-
-- Extends: `React.ComponentProps<typeof AriaHeading>`
-
-**DrawerDescription Props**
-
-- Extends: `React.ComponentProps<typeof AriaText>`
-
-**DrawerCloseIcon Props**
-
-- Extends: `React.ComponentProps<typeof Button>`
-
-**DrawerClose Props**
-
-- Extends: `ButtonProps`
-
-**DrawerTrigger Props**
-
-- Extends: `React.ComponentProps<typeof AriaDialogTrigger>`
+A drawer is a panel that slides in from the side of the screen. The usage of Drawer is similar to Dialog.
 
 ## Example
 
@@ -1919,51 +1743,98 @@ export function Basic() {
 }
 ```
 
-### Different Placements
+## API Reference
 
-Drawers can be placed on different sides:
+### Drawer
 
-```tsx
-import {
-  Button,
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerBody,
-  DrawerTitle,
-  DrawerTrigger,
-} from "@vela-ui/react"
+#### Props
 
-export function Placements() {
-  return (
-    <div className="flex gap-4">
-      <DrawerTrigger>
-        <Button variant="outline">Top Drawer</Button>
-        <Drawer placement="top">
-          <DrawerContent>
-            <DrawerHeader>
-              <DrawerTitle>Top Drawer</DrawerTitle>
-            </DrawerHeader>
-            <DrawerBody>Content slides in from the top.</DrawerBody>
-          </DrawerContent>
-        </Drawer>
-      </DrawerTrigger>
+**`showCloseButton`**
+Type: boolean
+Default: true
+Description: Whether to show the close button.
 
-      <DrawerTrigger>
-        <Button variant="outline">Left Drawer</Button>
-        <Drawer placement="left">
-          <DrawerContent>
-            <DrawerHeader>
-              <DrawerTitle>Left Drawer</DrawerTitle>
-            </DrawerHeader>
-            <DrawerBody>Content slides in from the left.</DrawerBody>
-          </DrawerContent>
-        </Drawer>
-      </DrawerTrigger>
-    </div>
-  )
-}
-```
+**`placement`**
+Type: "top" | "bottom" | "left" | "right"
+Default: "right"
+Description: The placement of the drawer.
+
+**`isBlurred`**
+Type: boolean
+Default: false
+Description: Whether to blur the background.
+
+**`isDismissable`**
+Type: boolean
+Default: true
+Description: Whether to close the modal when the user interacts outside it.
+
+**`isEntering`**
+Type: boolean
+Description: Whether the modal is currently performing an entry animation.
+
+**`isExiting`**
+Type: boolean
+Description: Whether the modal is currently performing an exit animation.
+
+**`isKeyboardDismissDisabled`**
+Type: boolean
+Default: false
+Description: Whether pressing the escape key to close the modal should be disabled.
+
+**`shouldCloseOnInteractOutside`**
+Type: (element: Element) => boolean
+Description: When user interacts with the argument element outside of the overlay ref, return true if onClose should be called.
+
+**`isOpen`**
+Type: boolean
+Description: Whether the overlay is open by default (controlled).
+
+**`defaultOpen`**
+Type: boolean
+Description: Whether the overlay is open by default (uncontrolled).
+
+#### Events
+
+**`onOpenChange`**
+Type: (isOpen: boolean) => void
+Description: Handler that is called when the overlay's open state changes.
+
+### DrawerContent
+
+same as DialogContent
+
+### DrawerBody
+
+#### Props
+
+**`children`**
+Type: React.ReactNode
+Description: The children of the drawer body.
+
+### DrawerHeader
+
+same as DialogHeader
+
+### DrawerTitle
+
+same as DialogTitle
+
+### DrawerDescription
+
+same as DialogDescription
+
+### DrawerCloseIcon
+
+same as DialogCloseIcon
+
+### DrawerClose
+
+same as DialogClose
+
+### DrawerTrigger
+
+same as DialogTrigger
 
 # Dropdown
 
@@ -2059,36 +1930,9 @@ These components include proper accessibility features:
 
 # Input
 
+## Anatomy
+
 An input is a text field that allows a user to enter text.
-
-## Props
-
-**Input Props**
-
-- Extends: `React.ComponentProps<typeof AriaInput>`
-- **`size`**
-  - Type: "xs" | "sm" | "md" | "lg" | "xl"
-  - Default: "md"
-  - Description: The size of the input.
-
-**InputGroup Props**
-
-- Extends: `React.ComponentProps<typeof AriaGroup>`
-- **`size`**
-  - Type: "xs" | "sm" | "md" | "lg" | "xl"
-  - Description: The size of the input group.
-- **`startElement`**
-  - Type: React.ReactNode
-  - Description: Element to display at the start of the input.
-- **`endElement`**
-  - Type: React.ReactNode
-  - Description: Element to display at the end of the input.
-- **`startAddon`**
-  - Type: React.ReactNode
-  - Description: Addon to display at the start of the input.
-- **`endAddon`**
-  - Type: React.ReactNode
-  - Description: Addon to display at the end of the input.
 
 ## Example
 
@@ -2124,39 +1968,46 @@ export function WithIcons() {
 }
 ```
 
-### Different Sizes
+## API Reference
 
-The Input component supports different sizes:
+### Input
 
-```tsx
-import { Input } from "@vela-ui/react"
+#### Props
 
-export function Sizes() {
-  return (
-    <div className="space-y-4">
-      <Input size="xs" placeholder="Extra small" />
-      <Input size="sm" placeholder="Small" />
-      <Input size="md" placeholder="Medium" />
-      <Input size="lg" placeholder="Large" />
-      <Input size="xl" placeholder="Extra large" />
-    </div>
-  )
-}
-```
+**`size`**
+Type: "xs" | "sm" | "md" | "lg" | "xl"
+Default: "md"
+Description: The size of the input.
+
+### InputGroup
+
+#### Props
+
+**`size`**
+Type: "xs" | "sm" | "md" | "lg" | "xl"
+Description: The size of the input group.
+
+**`startElement`**
+Type: React.ReactNode
+Description: Element to display at the start of the input.
+
+**`endElement`**
+Type: React.ReactNode
+Description: Element to display at the end of the input.
+
+**`startAddon`**
+Type: React.ReactNode
+Description: Addon to display at the start of the input.
+
+**`endAddon`**
+Type: React.ReactNode
+Description: Addon to display at the end of the input.
 
 # Loader
 
+## Anatomy
+
 A loader is a component that displays a loading state.
-
-## Props
-
-**Loader Props**
-
-- Extends: `React.ComponentProps<"svg">`
-- **`size`**
-  - Type: "xs" | "sm" | "md" | "lg" | "xl"
-  - Default: "md"
-  - Description: The size of the loader.
 
 ## Example
 
@@ -2166,47 +2017,23 @@ Here's a basic example of how to use the Loader component:
 import { Loader } from "@vela-ui/react"
 
 export function Basic() {
-  return <Loader />
+  return <Loader variant="spin" size="lg" className="text-primary" />
 }
 ```
 
-### Different Variants
+## API Reference
 
-The Loader component supports different animation variants:
+### Loader
 
-```tsx
-import { Loader } from "@vela-ui/react"
+**`size`**
+Type: "xs" | "sm" | "md" | "lg" | "xl"
+Default: "md"
+Description: The size of the loader.
 
-export function Variants() {
-  return (
-    <div className="flex items-center gap-4">
-      <Loader />
-      <Loader variant="ring" />
-      <Loader variant="spin" />
-    </div>
-  )
-}
-```
-
-### Different Sizes
-
-The Loader component supports different sizes:
-
-```tsx
-import { Loader } from "@vela-ui/react"
-
-export function Sizes() {
-  return (
-    <div className="flex items-center gap-4">
-      <Loader size="xs" />
-      <Loader size="sm" />
-      <Loader size="md" />
-      <Loader size="lg" />
-      <Loader size="xl" />
-    </div>
-  )
-}
-```
+**`variant`**
+Type: "default" | "ring" | "spin"
+Default: "default"
+Description: The variant of the loader.
 
 # Menu
 
@@ -2407,34 +2234,13 @@ export function WithArrow() {
 }
 ```
 
-# Radio & RadioGroup
-
-A radio group allows a user to select a single item from a list of mutually exclusive options.
+# RadioGroup
 
 [RadioGroup docs](https://react-spectrum.adobe.com/react-aria/RadioGroup.html)
 
-## Props
+## Anatomy
 
-**RadioGroup Props**
-
-- Extends: `RadioGroupRootProps`
-- **`label`**
-  - Type: string
-  - Description: The label for the radio group.
-- **`description`**
-  - Type: string
-  - Description: A description for the radio group.
-- **`errorMessage`**
-  - Type: string | ((validation: ValidationResult) => string)
-  - Description: Error message to display when validation fails.
-
-**Radio Props**
-
-- Extends: `React.ComponentProps<typeof AriaRadio>` and `VariantProps<typeof radioVariants>`
-- **`size`**
-  - Type: "sm" | "md" | "lg"
-  - Default: "md"
-  - Description: The size of the radio button.
+A radio group allows a user to select a single item from a list of mutually exclusive options.
 
 ## Example
 
@@ -2454,23 +2260,179 @@ export function Basic() {
 }
 ```
 
-### With Validation
+## API Reference
 
-A RadioGroup can include validation:
+### RadioGroup
 
-```tsx
-import { Radio, RadioGroup } from "@vela-ui/react"
+#### Props
 
-export function WithValidation() {
-  return (
-    <RadioGroup label="Required Selection" isRequired errorMessage="Please select an option">
-      <Radio value="option1">Option 1</Radio>
-      <Radio value="option2">Option 2</Radio>
-      <Radio value="option3">Option 3</Radio>
-    </RadioGroup>
-  )
-}
-```
+**`label`**
+Type: string
+Description: The label for the radio group.
+
+**`description`**
+Type: string
+Description: A description for the radio group.
+
+**`errorMessage`**
+Type: string | ((validation: ValidationResult) => string)
+Description: Error message to display when validation fails.
+
+**`orientation`**
+Type: "vertical" | "horizontal"
+Default: "vertical"
+Description: The axis the Radio Button(s) should align with.
+
+**`value`**
+Type: string | null
+Description: The current value (controlled).
+
+**`defaultValue`**
+Type: string | null
+Description: The default value (uncontrolled).
+
+**`isDisabled`**
+Type: boolean
+Description: Whether the input is disabled.
+
+**`isReadOnly`**
+Type: boolean
+Description: Whether the input can be selected but not changed by the user.
+
+**`isRequired`**
+Type: boolean
+Description: Whether user input is required on the input before form submission.
+
+**`isInvalid`**
+Type: boolean
+Description: Whether the input value is invalid.
+
+**`validate`**
+Type: (value: string | null) => ValidationError
+Description: A function that returns an error message if a given value is invalid.
+
+**`validationBehavior`**
+Type: 'native' | 'aria'
+Default: "native"
+Description: Whether to use native HTML form validation to prevent form submission when the value is missing or invalid, or mark the field as required or invalid via ARIA.
+
+**`name`**
+Type: string
+Description: The name of the input element, used when submitting an HTML form.
+
+**`form`**
+Type: string
+Description: The `<form>` element to associate the input with. The value of this attribute must be the id of a `<form>` in the same document.
+
+#### Events
+
+**`onChange`**
+Type: (value: string) => void
+Description: Handler that is called when the value changes.
+
+**`onFocus`**
+Type: (e: FocusEvent) => void
+Description: Handler that is called when the element receives focus.
+
+**`onFocusChange`**
+Type: (isFocused: boolean) => void
+Description: Handler that is called when the element's focus status changes.
+
+**`onBlur`**
+Type: (e: FocusEvent) => void
+Description: Handler that is called when the element loses focus.
+
+#### Accessibility
+
+**`id`**
+Type: string
+Description: The element's unique identifier.
+
+**`aria-label`**
+Type: string
+Description: Defines a string value that labels the current element.
+
+**`aria-labelledby`**
+Type: string
+Description: Identifies the element (or elements) that labels the current element.
+
+**`aria-describedby`**
+Type: string
+Description: Identifies the element (or elements) that describes the object.
+
+**`aria-details`**
+Type: boolean
+Description: Identifies the element (or elements) that provide a detailed, extended description for the object.
+
+**`aria-errormessage`**
+Type: string
+Description: Identifies the element that provides an error message for the object.
+
+### Radio
+
+#### Props
+
+**`variant`**
+Type: "default" | "outline"
+Default: "default"
+Description: The variant of the radio button.
+
+**`size`**
+Type: "sm" | "md" | "lg"
+Default: "md"
+Description: The size of the radio button.
+
+**`value`**
+Type: string
+Description: The value of the radio button, used when submitting an HTML form.
+
+**`inputRef`**
+Type: React.RefObject`HTMLInputElement` | null
+Description: A ref for the HTML input element.
+
+**`isDisabled`**
+Type: boolean
+Description: Whether the radio button is disabled or not. Shows that a selection exists, but is not available in that circumstance.
+
+**`autoFocus`**
+Type: boolean
+Description: Whether the element should receive focus on render.
+
+#### Events
+
+**`onFocus`**
+Type: (e: FocusEvent) => void
+Description: Handler that is called when the element receives focus.
+
+**`onFocusChange`**
+Type: (isFocused: boolean) => void
+Description: Handler that is called when the element's focus status changes.
+
+**`onBlur`**
+Type: (e: FocusEvent) => void
+Description: Handler that is called when the element loses focus.
+
+#### Accessibility
+
+**`id`**
+Type: string
+Description: The element's unique identifier.
+
+**`aria-label`**
+Type: string
+Description: Defines a string value that labels the current element.
+
+**`aria-labelledby`**
+Type: string
+Description: Identifies the element (or elements) that labels the current element.
+
+**`aria-describedby`**
+Type: string
+Description: Identifies the element (or elements) that describes the object.
+
+**`aria-details`**
+Type: boolean
+Description: Identifies the element (or elements) that provide a detailed, extended description for the object.
 
 # Select
 
@@ -2589,51 +2551,51 @@ export function Basic() {
 
 #### Props
 
-- **`size`**
-  - Type: "sm" | "md" | "lg"
-  - Default: "md"
-  - Description: The size of the slider.
+**`size`**
+Type: "sm" | "md" | "lg"
+Default: "md"
+Description: The size of the slider.
 
-- **`orientation`**
-  - Type: "horizontal" | "vertical"
-  - Default: "horizontal"
-  - Description: The orientation of the slider.
+**`orientation`**
+Type: "horizontal" | "vertical"
+Default: "horizontal"
+Description: The orientation of the slider.
 
-- **`isDisabled`**
-  - Type: boolean
-  - Default: false
-  - Description: Whether the whole Slider is disabled.
+**`isDisabled`**
+Type: boolean
+Default: false
+Description: Whether the whole Slider is disabled.
 
-- **`minValue`**
-  - Type: number
-  - Default: 0
-  - Description: The slider's minimum value.
+**`minValue`**
+Type: number
+Default: 0
+Description: The slider's minimum value.
 
-- **`maxValue`**
-  - Type: number
-  - Default: 100
-  - Description: The slider's maximum value.
+**`maxValue`**
+Type: number
+Default: 100
+Description: The slider's maximum value.
 
-- **`step`**
-  - Type: number
-  - Default: 1
-  - Description: The slider's step value.
+**`step`**
+Type: number
+Default: 1
+Description: The slider's step value.
 
-- **`defaultValue`**
-  - Type: T
-  - Description: The default value (uncontrolled).
+**`defaultValue`**
+Type: T
+Description: The default value (uncontrolled).
 
-- **`value`**
-  - Type: T
-  - Description: The current value (controlled).
+**`value`**
+Type: T
+Description: The current value (controlled).
 
-- **`onChange`**
-  - Type: (value: T) => void
-  - Description: Handler that is called when the value changes.
+**`onChange`**
+Type: (value: T) => void
+Description: Handler that is called when the value changes.
 
-- **`onChangeEnd`**
-  - Type: (value: T) => void
-  - Description: Fired when the slider stops moving, due to being let go.
+**`onChangeEnd`**
+Type: (value: T) => void
+Description: Fired when the slider stops moving, due to being let go.
 
 ### SliderOutput
 
@@ -2645,17 +2607,17 @@ The `SliderTrack` component is a grouping of one or more `SliderThumb` elements.
 
 #### Props
 
-- **`onHoverStart`**
-  - Type: (e: HoverEvent) => void
-  - Description: Handler that is called when a hover interaction starts.
+**`onHoverStart`**
+Type: (e: HoverEvent) => void
+Description: Handler that is called when a hover interaction starts.
 
-- **`onHoverEnd`**
-  - Type: (e: HoverEvent) => void
-  - Description: Handler that is called when a hover interaction ends.
+**`onHoverEnd`**
+Type: (e: HoverEvent) => void
+Description: Handler that is called when a hover interaction ends.
 
-- **`onHoverChange`**
-  - (isHovering: boolean) => void
-  - Handler that is called when the hover state changes.
+**`onHoverChange`**
+Type: (isHovering: boolean) => void
+Description: Handler that is called when the hover state changes.
 
 ### SliderThumb
 
@@ -2663,119 +2625,149 @@ The `SliderThumb` component renders an individual thumb within a `SliderTrack`.
 
 #### Props
 
-- **`inputRef`**
-  - Type: React.RefObject`HTMLInputElement` | null
-  - Description: A ref for the HTML input element.
+**`inputRef`**
+Type: React.RefObject`HTMLInputElement` | null
+Description: A ref for the HTML input element.
 
-- **`isDisabled`**
-  - Type: boolean
-  - Description: Whether the Thumb is disabled.
+**`isDisabled`**
+Type: boolean
+Description: Whether the Thumb is disabled.
 
-- **`index`**
-  - Type: number
-  - Default: 0
-  - Description: Index of the thumb within the slider.
+**`index`**
+Type: number
+Default: 0
+Description: Index of the thumb within the slider.
 
-- **`autoFocus`**
-  - Type: boolean
-  - Description: Whether the element should receive focus on render.
+**`autoFocus`**
+Type: boolean
+Description: Whether the element should receive focus on render.
 
-- **`name`**
-  - Type: string
-  - Description: The name of the input element, used when submitting an HTML form
+**`name`**
+Type: string
+Description: The name of the input element, used when submitting an HTML form
 
-- **`form`**
-  - Type: string
-  - Description: The <form> element to associate the input with. The value of this attribute must be the id of a <form> in the same document.
+**`form`**
+Type: string
+Description: The <form> element to associate the input with. The value of this attribute must be the id of a <form> in the same document.
 
 # Switch
 
-A switch allows a user to turn a setting on or off.
-
 [Switch docs](https://react-spectrum.adobe.com/react-aria/Switch.html)
 
-## Props
+## Anatomy
 
-**Switch Props**
-
-- Extends: `React.ComponentProps<typeof AriaSwitch>` and `VariantProps<typeof switchVariants>`
-- **`size`**
-  - Type: "sm" | "md" | "lg" | "xl"
-  - Default: "md"
-  - Description: The size of the switch.
+A switch allows a user to turn a setting on or off.
 
 ## Example
 
 Here's a basic example of how to use the Switch component:
 
-````tsx
+```tsx
 import { Switch } from "@vela-ui/react"
 
 export function Basic() {
   return <Switch>Enable notifications</Switch>
 }
-
-### Different Sizes
-
-The Switch component supports different sizes:
-
-```tsx
-import { Switch } from "@vela-ui/react"
-
-export function Sizes() {
-  return (
-    <div className="space-y-4">
-      <Switch size="sm">Small</Switch>
-      <Switch size="md">Medium</Switch>
-      <Switch size="lg">Large</Switch>
-      <Switch size="xl">Extra Large</Switch>
-    </div>
-  )
-}
-````
-
-### Disabled Switch
-
-A Switch can be disabled:
-
-```tsx
-import { Switch } from "@vela-ui/react"
-
-export function Disabled() {
-  return (
-    <div className="space-y-4">
-      <Switch isDisabled>Disabled</Switch>
-      <Switch isDisabled defaultSelected>
-        Disabled (selected)
-      </Switch>
-    </div>
-  )
-}
 ```
+
+## API Reference
+
+### Switch
+
+#### Props
+
+**`size`**
+Type: "sm" | "md" | "lg" | "xl"
+Default: "md"
+Description: The size of the switch.
+
+**`inputRef`**
+Type: React.RefObject`<HTMLInputElement>`
+Description: A ref for the HTML input element.
+
+**`defaultSelected`**
+Type: boolean
+Description: Whether the Switch should be selected (uncontrolled).
+
+**`isSelected`**
+Type: boolean
+Description: Whether the Switch should be selected (controlled).
+
+**`value`**
+Type: boolean
+Description: The value of the input element, used when submitting an HTML form.
+
+**`isDisabled`**
+Type: boolean
+Description: Whether the input is disabled.
+
+**`isReadOnly`**
+Type: boolean
+Description: Whether the input can be selected but not changed by the user.
+
+**`autoFocus`**
+Type: boolean
+Description: Whether the element should receive focus on render.
+
+**`name`**
+Type: string
+Description: The name of the input element, used when submitting an HTML form.
+
+**`form`**
+Type: string
+Description: The `<form>` element to associate the input with. The value of this attribute must be the id of a `<form>` in the same document.
+
+#### Events
+
+**`onChange`**
+Type: (isSelected: boolean) => void
+Description: Handler that is called when the Switch's selection state changes.
+
+**`onFocus`**
+Type: (e: FocusEvent) => void
+Description: Handler that is called when the element receives focus.
+
+**`onFocusChange`**
+Type: (isFocused: boolean) => void
+Description: Handler that is called when the element's focus status changes.
+
+**`onBlur`**
+Type: (e: FocusEvent) => void
+Description: Handler that is called when the element loses focus.
+
+#### Accessibility
+
+**`id`**
+Type: string
+Description: The element's unique identifier.
+
+**`aria-controls`**
+Type: string
+Description: Identifies the element (or elements) whose contents or presence are controlled by the current element.
+
+**`aria-label`**
+Type: string
+Description: Defines a string value that labels the current element.
+
+**`aria-labelledby`**
+Type: string
+Description: Identifies the element (or elements) that labels the current element.
+
+**`aria-describedby`**
+Type: string
+Description: Identifies the element (or elements) that describes the object.
+
+**`aria-details`**
+Type: boolean
+Description: Identifies the element (or elements) that provide a detailed, extended description for the object.
 
 # Tabs
 
-Tabs organize content into multiple sections and allow users to navigate between them.
-
 [Tabs docs](https://react-spectrum.adobe.com/react-aria/Tabs.html)
 
-## Props
+## Anatomy
 
-**Tabs Props**
-
-- Extends: `React.ComponentProps<typeof AriaTabs>` and `VariantProps<typeof tabsVariants>`
-- **`variant`**
-  - Type: "default" | "underline" | "pills"
-  - Default: "default"
-  - Description: The visual variant of the tabs.
-- **`size`**
-  - Type: "sm" | "md" | "lg"
-  - Default: "md"
-  - Description: The size of the tabs.
-- **`orientation`**
-  - Type: "horizontal" | "vertical"
-  - Default: "horizontal"
-  - Description: The orientation of the tabs.
+Tabs organize content into multiple sections and allow users to navigate between them.
 
 ## Example
 
@@ -2800,85 +2792,154 @@ export function Basic() {
 }
 ```
 
-### Different Variants
+## API Reference
 
-Tabs support different visual variants:
+### Tabs
 
-```tsx
-import { Tab, TabList, TabPanel, Tabs } from "@vela-ui/react"
+#### Props
 
-export function Variants() {
-  return (
-    <div className="space-y-8">
-      <div>
-        <h3 className="mb-4">Default</h3>
-        <Tabs variant="default">
-          <TabList>
-            <Tab id="tab1">Tab 1</Tab>
-            <Tab id="tab2">Tab 2</Tab>
-          </TabList>
-          <TabPanel id="tab1">Default variant content</TabPanel>
-          <TabPanel id="tab2">Default variant content</TabPanel>
-        </Tabs>
-      </div>
+**`variant`**
+Type: "default" | "underline" | "pills"
+Default: "default"
+Description: The visual variant of the tabs.
 
-      <div>
-        <h3 className="mb-4">Underline</h3>
-        <Tabs variant="underline">
-          <TabList>
-            <Tab id="tab1">Tab 1</Tab>
-            <Tab id="tab2">Tab 2</Tab>
-          </TabList>
-          <TabPanel id="tab1">Underline variant content</TabPanel>
-          <TabPanel id="tab2">Underline variant content</TabPanel>
-        </Tabs>
-      </div>
+**`size`**
+Type: "sm" | "md" | "lg"
+Default: "md"
+Description: The size of the tabs.
 
-      <div>
-        <h3 className="mb-4">Pills</h3>
-        <Tabs variant="pills">
-          <TabList>
-            <Tab id="tab1">Tab 1</Tab>
-            <Tab id="tab2">Tab 2</Tab>
-          </TabList>
-          <TabPanel id="tab1">Pills variant content</TabPanel>
-          <TabPanel id="tab2">Pills variant content</TabPanel>
-        </Tabs>
-      </div>
-    </div>
-  )
-}
-```
+**`orientation`**
+Type: "horizontal" | "vertical"
+Default: "horizontal"
+Description: The orientation of the tabs.
+
+**`isDisabled`**
+Type: boolean
+Default: false
+Description: Whether the TabList is disabled. Shows that a selection exists, but is not available in that circumstance.
+
+**`disabledKeys`**
+Type: Iterable`<Key>`
+Description: The item keys that are disabled. These items cannot be selected, focused, or otherwise interacted with.
+
+**`selectedKey`**
+Type: Key | null
+Default: false
+Description: The currently selected key in the collection (controlled).
+
+**`defaultSelectedKey`**
+Type: Key
+Description: The initial selected key in the collection (uncontrolled).
+
+**`keyboardActivation`**
+Type: 'automatic' | 'manual'
+Default: 'automatic'
+Description: Whether tabs are activated automatically on focus or manually.
+
+#### Events
+
+**`onSelectionChange`**
+Type: (key: Key) => void
+Description: Handler that is called when the selection changes.
+
+#### Accessibility
+
+**`id`**
+Type: string
+Description: The element's unique identifier.
+
+**`aria-label`**
+Type: string
+Description: Defines a string value that labels the current element.
+
+**`aria-labelledby`**
+Type: string
+Description: Identifies the element (or elements) that labels the current element.
+
+**`aria-describedby`**
+Type: string
+Description: Identifies the element (or elements) that describes the object.
+
+**`aria-details`**
+Type: boolean
+Description: Identifies the element (or elements) that provide a detailed, extended description for the object.
+
+### TabList
+
+#### Props
+
+**`dependencies`**
+Type: ReadonlyArray
+Description:Values that should invalidate the item cache when using dynamic collections.
+
+**`items`**
+Type: Iterable`<T>`
+Description: Item objects in the collection.
+
+### Tab
+
+#### Props
+
+**`id`**
+Type: Key
+Description: The unique id of the tab.
+
+**`isDisabled`**
+Type: boolean
+Description: Whether the tab is disabled.
+
+**`href`**
+Type: string
+Description: A URL to link to.
+
+**`hrefLang`**
+Type: string
+Description: Hints at the human language of the linked URL
+
+**`target`**
+Type: "\_blank" | "\_self" | "\_parent" | "\_top"
+Description: The target window for the link.
+
+**`rel`**
+Type: string
+Description: The relationship between the linked resource and the current page.
+
+**`download`**
+Type: boolean | string
+Description: Causes the browser to download the linked URL. A string may be provided to suggest a file name.
+
+**`routerOptions`**
+Type: RouterOptions
+Description: Options for the configured client side router.
+
+### TabPanel
+
+#### Props
+
+**`shouldForceMount`**
+Type: boolean
+Default: false
+Description: Whether to mount the tab panel in the DOM even when it is not currently selected. Inactive tab panels are inert and cannot be interacted with. They must be styled appropriately so this is clear to the user visually.
+
+**`id`**
+Type: Key
+Description: The unique id of the tab.
+
+**`isDisabled`**
+Type: boolean
+Description: Whether the tab panel is disabled.
+
+**`children`**
+Type: React.ReactNode
+Description: The children of the component. A function may be provided to alter the children based on component state.
 
 # TextField
 
-A text field allows a user to enter a plain text value with a keyboard.
-
 [TextField docs](https://react-spectrum.adobe.com/react-aria/TextField.html)
 
-## Props
+## Anatomy
 
-**TextField Props**
-
-- Extends: `FieldProps`, `React.ComponentProps<typeof AriaTextField>`, `VariantProps<typeof textFieldVariants>`, and `Pick<InputGroupProps, "size" | "startElement" | "endElement" | "startAddon" | "endAddon">`
-- **`label`**
-  - Type: string
-  - Description: The label for the text field.
-- **`description`**
-  - Type: string
-  - Description: A description for the text field.
-- **`errorMessage`**
-  - Type: string | ((validation: ValidationResult) => string)
-  - Description: Error message to display when validation fails.
-- **`size`**
-  - Type: "xs" | "sm" | "md" | "lg" | "xl"
-  - Description: The size of the text field.
-- **`startElement`**
-  - Type: React.ReactNode
-  - Description: Element to display at the start of the input.
-- **`endElement`**
-  - Type: React.ReactNode
-  - Description: Element to display at the end of the input.
+A text field allows a user to enter a plain text value with a keyboard.
 
 ## Example
 
@@ -2898,46 +2959,128 @@ export function Basic() {
 }
 ```
 
-### With Icons
+## API Reference
 
-A TextField can include icons:
+### TextField
 
-```tsx
-import { TextField } from "@vela-ui/react"
-import { MailIcon, LockIcon } from "lucide-react"
+#### Props
 
-export function WithIcons() {
-  return (
-    <div className="space-y-4">
-      <TextField
-        label="Email"
-        placeholder="Enter your email"
-        startElement={<MailIcon className="size-4" />}
-      />
-      <TextField
-        label="Password"
-        type="password"
-        placeholder="Enter your password"
-        startElement={<LockIcon className="size-4" />}
-      />
-    </div>
-  )
-}
-```
+**`label`**
+Type: string
+Description: The label for the text field.
+
+**`description`**
+Type: string
+Description: A description for the text field.
+
+**`errorMessage`**
+Type: string | ((validation: ValidationResult) => string)
+Description: Error message to display when validation fails.
+
+**`size`**
+Type: "xs" | "sm" | "md" | "lg" | "xl"
+Description: The size of the text field.
+
+**`startElement`**
+Type: React.ReactNode
+Description: Element to display at the start of the input.
+
+**`endElement`**
+Type: React.ReactNode
+Description: Element to display at the end of the input.
+
+**`isInvalid`**
+Type: boolean
+Description: Whether the value is invalid.
+
+**`isDisabled`**
+Type: boolean
+Description: Whether the input is disabled.
+
+**`isReadOnly`**
+Type: boolean
+Description: Whether the input can be selected but not changed by the user.
+
+**`isRequired`**
+Type: boolean
+Description: Whether user input is required on the input before form submission.
+
+**`validate`**
+Type: (value: string) => ValidationError
+Description: A function that returns an error message if a given value is invalid.
+
+**`autoFocus`**
+Type: boolean
+Description: Whether the element should receive focus on render.
+
+**`value`**
+Type: string
+Description: The current value (controlled).
+
+**`defaultValue`**
+Type: string
+Description: The default value (uncontrolled).
+
+**`autoComplete`**
+Type: string
+Description: Describes the type of autocomplete functionality the input should provide if any.
+
+**`maxLength`**
+Type: number
+Description: The maximum number of characters supported by the input.
+
+**`minLength`**
+Type: number
+Description: The minimum number of characters required by the input.
+
+**`pattern`**
+Type: string
+Description: Regex pattern that the value of the input must match to be valid.
+
+**`type`**
+Type: 'text'| 'search'| 'url'| 'tel'| 'email'| 'password' | string
+Description: The type of input to render.
+
+**`inputMode`**
+Type: 'none' | 'text' | 'tel' | 'url' | 'email' | 'numeric' | 'decimal' | 'search'
+Description:Hints at the type of data that might be entered by the user while editing the element or its contents.
+
+**`name`**
+Type: string
+Description: The name of the input element, used when submitting an HTML form.
+
+**`form`**
+Type: string
+Description: The `<form>` element to associate the input with. The value of this attribute must be the id of a `<form>` in the same document.
+
+**`validationBehavior`**
+Type: "native" | "aria"
+Default: "native"
+Description: Whether to use native HTML form validation to prevent form submission when the value is missing or invalid, or mark the field as required or invalid via ARIA.
+
+#### Events
+
+**`onFocus`**
+Type: (e: FocusEvent<T>) => void
+Description: Handler that is called when the element receives focus.
+
+**`onFocusChange`**
+Type: (isFocused: boolean) => void
+Description: Handler that is called when the element's focus status changes.
+
+**`onBlur`**
+Type: (e: FocusEvent<T>) => void
+Description: Handler that is called when the element loses focus.
+
+**`onChange`**
+Type: (value: T) => void
+Description: Handler that is called when the value changes.
 
 # Textarea
 
+## Anatomy
+
 A textarea allows a user to enter a longer text value with a keyboard.
-
-## Props
-
-**Textarea Props**
-
-- Extends: `Omit<React.ComponentProps<typeof AriaTextArea>, "color">` and `VariantProps<typeof textAreaVariants>`
-- **`size`**
-  - Type: "xs" | "sm" | "md" | "lg" | "xl"
-  - Default: "md"
-  - Description: The size of the textarea.
 
 ## Example
 
@@ -2951,58 +3094,24 @@ export function Basic() {
 }
 ```
 
-### Different Sizes
+## API Reference
 
-The Textarea component supports different sizes:
+### Textarea
 
-```tsx
-import { Textarea } from "@vela-ui/react"
+#### Props
 
-export function Sizes() {
-  return (
-    <div className="space-y-4">
-      <Textarea size="xs" placeholder="Extra small" />
-      <Textarea size="sm" placeholder="Small" />
-      <Textarea size="md" placeholder="Medium" />
-      <Textarea size="lg" placeholder="Large" />
-      <Textarea size="xl" placeholder="Extra large" />
-    </div>
-  )
-}
-```
-
-### With Label
-
-A Textarea can include a label:
-
-```tsx
-import { Label, Textarea } from "@vela-ui/react"
-
-export function WithLabel() {
-  return (
-    <div className="space-y-2">
-      <Label htmlFor="message">Message</Label>
-      <Textarea id="message" placeholder="Enter your message..." rows={4} />
-    </div>
-  )
-}
-```
+**`size`**
+Type: "xs" | "sm" | "md" | "lg" | "xl"
+Default: "md"
+Description: The size of the textarea.
 
 # Tooltip
 
-A tooltip displays a description of an element on hover or focus.
-
 [Tooltip docs](https://react-spectrum.adobe.com/react-aria/Tooltip.html)
 
-## Props
+## Anatomy
 
-**Tooltip Props**
-
-- Extends: `React.ComponentProps<typeof AriaTooltip>` and `VariantProps<typeof tooltipVariants>`
-- **`showArrow`**
-  - Type: boolean
-  - Default: false
-  - Description: Whether the element should render an arrow.
+A tooltip displays a description of an element on hover or focus.
 
 ## Example
 
@@ -3021,53 +3130,127 @@ export function Basic() {
 }
 ```
 
-### With Arrow
+## API Reference
 
-A Tooltip can include an arrow:
+### TooltipTrigger
 
-```tsx
-import { Button, Tooltip, TooltipTrigger } from "@vela-ui/react"
+#### Props
 
-export function WithArrow() {
-  return (
-    <TooltipTrigger>
-      <Button variant="outline">Hover me</Button>
-      <Tooltip showArrow>This tooltip has an arrow</Tooltip>
-    </TooltipTrigger>
-  )
-}
-```
+**`children`**
+Type: React.ReactNode
+Description: The children of the tooltip trigger.
 
-### Different Placements
+**`isDisabled`**
+Type: boolean
+Description: Whether the tooltip should be disabled, independent from the trigger.
 
-A Tooltip can be positioned in different places:
+**`delay`**
+Type: number
+Default: 1500
+Description: The delay time for the tooltip to show up.
 
-```tsx
-import { Button, Tooltip, TooltipTrigger } from "@vela-ui/react"
+**`closeDelay`**
+Type: number
+Default: 500
+Description: The delay time for the tooltip to close
 
-export function Placements() {
-  return (
-    <div className="flex gap-4">
-      <TooltipTrigger>
-        <Button variant="outline">Top</Button>
-        <Tooltip placement="top">Tooltip on top</Tooltip>
-      </TooltipTrigger>
+**`trigger`**
+Type: "focus"
+Description: By default, opens for both focus and hover. Can be made to open only for focus.
 
-      <TooltipTrigger>
-        <Button variant="outline">Bottom</Button>
-        <Tooltip placement="bottom">Tooltip on bottom</Tooltip>
-      </TooltipTrigger>
+**`isOpen`**
+Type: boolean
+Description: Whether the overlay is open by default (controlled).
 
-      <TooltipTrigger>
-        <Button variant="outline">Left</Button>
-        <Tooltip placement="left">Tooltip on left</Tooltip>
-      </TooltipTrigger>
+**`defaultOpen`**
+Type: boolean
+Description: Whether the overlay is open by default (uncontrolled).
 
-      <TooltipTrigger>
-        <Button variant="outline">Right</Button>
-        <Tooltip placement="right">Tooltip on right</Tooltip>
-      </TooltipTrigger>
-    </div>
-  )
-}
-```
+#### Events
+
+**`onOpenChange`**
+Type: (isOpen: boolean) => void
+Description: Handler that is called when the overlay's open state changes.
+
+### Tooltip
+
+#### Props
+
+**`showArrow`**
+Type: boolean
+Default: false
+Description: Whether the element should render an arrow.
+
+**`triggerRef`**
+Type: React.RefObject`Element` | null
+Description: The ref for the element which the tooltip positions itself with respect to.
+
+**`isEntering`**
+Type: boolean
+Description: Whether the tooltip is currently performing an entry animation.
+
+**`isExiting`**
+Type: boolean
+Description: Whether the tooltip is currently performing an exit animation.
+
+**`placement`**
+Type: "top" | "bottom" | "left" | "right"
+Default: "top"
+Description: The placement of the tooltip with respect to the trigger.
+
+**`containerPadding`**
+Type: number
+Default: 12
+Description: The placement padding that should be applied between the element and its surrounding container.
+
+**`offset`**
+Type: number
+Default: 0
+Description: The additional offset applied along the main axis between the element and its anchor element.
+
+**`crossOffset`**
+Type: number
+Default: 0
+Description: The additional offset applied along the cross axis between the element and its anchor element.
+
+**`arrowBoundaryOffset`**
+Type: number
+Default: 0
+Description: The minimum distance the arrow's edge should be from the edge of the overlay element.
+
+**`shouldFlip`**
+Type: boolean
+Default: true
+Description: Whether the element should flip its orientation (e.g. top to bottom or left to right) when there is insufficient room for it to render completely.
+
+**`isOpen`**
+Type: boolean
+Description: Whether the element is rendered.
+
+**`defaultOpen`**
+Type: boolean
+Description: Whether the overlay is open by default (uncontrolled).
+
+#### Events
+
+**`onOpenChange`**
+Type: (isOpen: boolean) => void
+Description: Handler that is called when the overlay's open state changes.
+
+#### Accessibility
+
+**`aria-label`**
+Type: string
+Description: Defines a string value that labels the current element.
+
+**`aria-labelledby`**
+Type: string
+Description: Identifies the element (or elements) that labels the current element.
+
+**`aria-describedby`**
+Type: string
+Description: Identifies the element (or elements) that describes the object.
+
+**`aria-details`**
+Type: string
+Description: Identifies the element (or elements) that provide a detailed, extended description for the object.
