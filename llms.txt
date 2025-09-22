@@ -3254,3 +3254,33 @@ Description: Identifies the element (or elements) that describes the object.
 **`aria-details`**
 Type: string
 Description: Identifies the element (or elements) that provide a detailed, extended description for the object.
+
+# Hooks
+
+---
+
+## useDisclosure
+
+A hook that provides a way to control the open state of a component.
+
+### Props
+
+**`isOpen`**
+Type: boolean
+Description: Whether the component is open.
+
+**`defaultOpen`**
+Type: boolean
+Description: Whether the component is open by default.
+
+**`onOpen`**
+Type: () => void
+Description: Function to call when the component is opened.
+
+**`onOpenChange`**
+Type: (isOpen: boolean) => void
+Description: Function to call when the component's open state changes.
+
+**`onClose`**
+Type: () => void
+Description: Function to call when the component is closed.
