@@ -1,5 +1,23 @@
 # @vela-ui/react
 
+## 2.0.26
+
+### Patch Changes
+
+- [#86](https://github.com/vela-ui/vela-ui/pull/86) [`7f8e333`](https://github.com/vela-ui/vela-ui/commit/7f8e333c02259dc29e4ce38edd52e08755b0fb6e) Thanks [@bobbychan](https://github.com/bobbychan)! - Add DialogBody
+
+## 2.0.25
+
+### Patch Changes
+
+- [#84](https://github.com/vela-ui/vela-ui/pull/84) [`79242d0`](https://github.com/vela-ui/vela-ui/commit/79242d035808f6d450c413b0232ae2ec5e0c72dc) Thanks [@bobbychan](https://github.com/bobbychan)! - Update Tabs style
+
+## 2.0.24
+
+### Patch Changes
+
+- [#82](https://github.com/vela-ui/vela-ui/pull/82) [`9441d87`](https://github.com/vela-ui/vela-ui/commit/9441d8709f246fcad556d228ffc1bd03b1c416c4) Thanks [@bobbychan](https://github.com/bobbychan)! - Style adjustment
+
 ## 2.0.23
 
 ### Patch Changes
