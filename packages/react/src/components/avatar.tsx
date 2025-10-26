@@ -1,3 +1,5 @@
+"use client"
+
 /**
  * @see https://github.com/radix-ui/primitives/blob/main/packages/react/avatar/src/avatar.tsx
  */
@@ -21,9 +23,11 @@ const avatarVariants = tv({
   },
   variants: {
     size: {
+      xs: { root: "size-6" },
       sm: { root: "size-8" },
       md: { root: "size-10" },
       lg: { root: "size-12" },
+      xl: { root: "size-14" },
     },
     shape: {
       circle: { root: "rounded-full" },
